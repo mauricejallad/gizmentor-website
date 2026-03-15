@@ -2,6 +2,34 @@
 
 The app builds to the `dist/` folder. Client-side routes (e.g. `/products`, `/terms`) are configured so they work on refresh and direct links.
 
+---
+
+## Connect to GitHub (repo: gizmentor-app)
+
+1. **Create the repository on GitHub**  
+   Go to [github.com/new](https://github.com/new), set the name to **gizmentor-app**, leave it empty (no README, .gitignore, or license). Create the repo.
+
+2. **From your project folder, run:**
+
+   ```bash
+   # Add the GitHub repo as the remote named "origin"
+   git remote add origin https://github.com/YOUR_USERNAME/gizmentor-app.git
+
+   # Ensure the branch is named "main" (Vercel expects this by default)
+   git branch -M main
+
+   # Push your commits and set "main" to track "origin/main"
+   git push -u origin main
+   ```
+
+   Replace `YOUR_USERNAME` with your GitHub username. If you use SSH instead of HTTPS, use:
+
+   `git remote add origin git@github.com:YOUR_USERNAME/gizmentor-app.git`
+
+3. After the push, the project is on GitHub and ready to import in Vercel.
+
+---
+
 ## Option 1: Vercel (recommended)
 
 1. Push your code to GitHub (if not already).
