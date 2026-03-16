@@ -14,8 +14,18 @@ export default function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Simulate submission
-    alert('Thank you for your inquiry. We will contact you soon.');
+
+    const recipient = 'info@gizmentor.com';
+    const subject = encodeURIComponent(`New ${formData.inquiryType.replace('-', ' ')} inquiry from ${formData.name}`);
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\n` +
+      `Email: ${formData.email}\n` +
+      `Inquiry type: ${formData.inquiryType}\n\n` +
+      `Message:\n${formData.message}`
+    );
+
+    window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
+
     setFormData({ name: '', email: '', inquiryType: 'product-support', message: '' });
   };
 
