@@ -1,4 +1,4 @@
-function ProductCard({ product }) {
+function ProductCard(product) {
     return (
       <div className="product-card">
         <h3>{product.name}</h3>
@@ -6,3 +6,5 @@ function ProductCard({ product }) {
       </div>
     );
   }
+  
+  export default ProductCard;
