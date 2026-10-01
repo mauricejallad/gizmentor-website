@@ -3,6 +3,7 @@ import { ArrowRight } from 'lucide-react';
 import { useLocale } from '../../i18n/useLocale';
 import { ventures } from '../../config/site';
 import magfusionImg from '../../assets/magfusion/magfusion-product.webp';
+import { screens } from '../easelect/screens';
 
 function Facts({ facts }) {
   return (
@@ -21,10 +22,15 @@ export default function VentureCards() {
   return (
     <div className="ventures-grid">
       <article className="venture-card reveal" data-venture="easelect">
-        <div className="venture-body">
-          <p className="venture-kind"><span className="venture-cue" aria-hidden="true" />{easelect.kind}</p>
-          <h3 className="venture-name">{ventures.easelect.name}</h3>
-          <p className="venture-desc">{easelect.desc}</p>
+        <div className="venture-split">
+          <div className="venture-body">
+            <p className="venture-kind"><span className="venture-cue" aria-hidden="true" />{easelect.kind}</p>
+            <h3 className="venture-name">{ventures.easelect.name}</h3>
+            <p className="venture-desc">{easelect.desc}</p>
+          </div>
+          <div className="venture-media">
+            <img src={screens.home.src} alt={t.easelect.screens.home} width={screens.home.w} height={screens.home.h} loading="lazy" />
+          </div>
         </div>
         <Facts facts={easelect.facts} />
         <Link to={to(ventures.easelect.path)} className="venture-link">

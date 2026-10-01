@@ -2,7 +2,6 @@ import PageHero from '../components/ui/PageHero';
 import Section from '../components/ui/Section';
 import PillarGrid from '../components/ui/PillarGrid';
 import CapabilityGrid from '../components/ui/CapabilityGrid';
-import FounderCard from '../components/ui/FounderCard';
 import CtaBand from '../components/ui/CtaBand';
 import { useLocale } from '../i18n/useLocale';
 import { company } from '../config/site';
@@ -39,8 +38,6 @@ export default function About() {
           <div><dt>{a.facts.trademark}</dt><dd>{t.common.trademark}</dd></div>
         </dl>
       </Section>
-
-      <Section tone="muted"><FounderCard /></Section>
 
       <CtaBand
         title={a.cta.title}

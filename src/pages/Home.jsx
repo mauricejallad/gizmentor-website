@@ -4,7 +4,6 @@ import PillarGrid from '../components/ui/PillarGrid';
 import CapabilityGrid from '../components/ui/CapabilityGrid';
 import VentureCards from '../components/ui/VentureCards';
 import LinkRows from '../components/ui/LinkRows';
-import FounderCard from '../components/ui/FounderCard';
 import CtaBand from '../components/ui/CtaBand';
 import ModelDiagram from '../components/home/ModelDiagram';
 import { useLocale } from '../i18n/useLocale';
@@ -54,12 +53,7 @@ export default function Home() {
         <CapabilityGrid />
       </Section>
 
-      {/* 6 — Leadership */}
-      <Section tone="muted">
-        <FounderCard />
-      </Section>
-
-      {/* 7 — Close */}
+      {/* 6 — Close */}
       <CtaBand
         title={h.cta.title}
         body={h.cta.body}

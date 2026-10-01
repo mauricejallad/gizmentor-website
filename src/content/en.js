@@ -42,15 +42,6 @@ const en = {
       { icon: 'ShoppingBag', title: 'Commerce', body: 'Licensed for e-commerce and trading, with hands-on retail experience.' },
       { icon: 'Rocket', title: 'Execution', body: 'From concept to a regulated product in market. We finish what we start.' },
     ],
-    founder: {
-      eyebrow: 'Leadership',
-      name: 'Maurice Jallad',
-      title: 'Founder & General Manager',
-      bio: [
-        'Maurice brings extensive experience from the telecommunications and digital sector, leading digital transformation, UX and product strategy, AI-enabled customer experiences and digital commerce across large-scale digital channels.',
-        'That experience gives GizMentor a practical framework: identify the customer problem precisely, design the digital experience around it, and convert it into a product that can scale.',
-      ],
-    },
     ventureCards: {
       easelect: {
         kind: 'AI platform',
@@ -189,19 +180,12 @@ const en = {
       primary: 'Visit Easelect',
       secondary: 'Partner with Easelect',
     },
-    mockup: {
-      caption: 'Illustrative interface',
-      pill: 'AI shopping research',
-      message: 'I need headphones for long flights: comfortable, great noise cancelling, under AED 1,000.',
-      requirements: 'Your requirements',
-      tags: ['All-day comfort', 'Strong ANC', '≤ AED 1,000'],
-      researching: 'Researching',
-      sources: ['Specifications', 'Expert reviews', 'YouTube reviews', 'Reddit discussions'],
-      badge: 'Best match for you',
-      pickName: 'Over-ear ANC · Option A',
-      pickWhy: 'Most consistent praise for comfort on long wear, with top-tier noise cancelling in your budget.',
-      compared: '2 alternatives compared',
-      prices: 'View prices',
+    screens: {
+      caption: 'Screens from the Easelect app',
+      home: 'Easelect app home screen asking what you are shopping for, with suggested searches',
+      question: 'Easelect asking a follow-up question about the style of headphones the shopper wants',
+      product: 'Easelect product detail showing the recommended headphones, rating, price and delivery',
+      prices: 'Easelect price comparison listing retailers by lowest total price including delivery',
     },
     problem: {
       eyebrow: 'The problem',

@@ -1,4 +1,4 @@
-import { SITE_URL, company, founder, ventures } from './site.js';
+import { SITE_URL, company, ventures } from './site.js';
 import { LOCALES, localeFromPath, localizePath, stripLocale } from '../i18n/locales.js';
 
 export const DEFAULT_OG_IMAGE = '/og/gizmentor-og.png';
@@ -75,7 +75,6 @@ export function getStructuredData(pathname) {
       addressLocality: c.common.address.city,
       addressCountry: company.countryCode,
     },
-    founder: { '@type': 'Person', name: founder.name, jobTitle: c.common.founder.title },
   };
   const graph = [
     organization,

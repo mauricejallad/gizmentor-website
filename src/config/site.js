@@ -23,12 +23,6 @@ export const company = {
   },
 };
 
-export const founder = {
-  name: 'Maurice Jallad',
-  initials: 'MJ',
-  photo: null, // import an image and assign here to replace the monogram
-};
-
 export const ventures = {
   easelect: {
     name: 'Easelect',

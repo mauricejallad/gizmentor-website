@@ -16,7 +16,7 @@ Corporate and investor site for GizMentor FZCO, in English and Arabic, with ligh
 | OG images, JSON-LD, which routes are indexable | `src/config/seo.js` |
 | Design tokens (light and dark) | `src/styles/index.css` → `:root` and `:root[data-theme='dark']` |
 
-Values set to `null` (registration numbers, unverified MagFusion specs, the founder photo) are hidden until filled in.
+Values set to `null` (registration numbers, unverified MagFusion specs) are hidden until filled in.
 
 ## Languages
 English lives at `/…`, Arabic at `/ar/…` (right-to-left). `src/i18n/locales.js` maps paths to locales; components get the current language's copy with `useLocale()` (`t` for copy, `to()` to localise a link). Brand names stay in Latin script in Arabic. The legal pages are English-only; on `/ar/…` they show an Arabic notice above the English text.
