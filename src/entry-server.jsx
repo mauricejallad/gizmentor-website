@@ -3,7 +3,7 @@ import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom/server';
 import AppRoutes from './routes';
 
-export { getMeta, getStructuredData, indexableRoutes } from './config/seo';
+export { getAlternates, getMeta, getStructuredData, indexableRoutes } from './config/seo';
 
 export function render(url) {
   return renderToString(

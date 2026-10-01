@@ -11,6 +11,29 @@ import Terms from './pages/Terms';
 import Privacy from './pages/Privacy';
 import Returns from './pages/Returns';
 import NotFound from './pages/NotFound';
+import { localizePath } from './i18n/locales';
+
+/** The same page tree, mounted once per locale. */
+function pages(locale) {
+  const to = (p) => localizePath(locale, p);
+  return (
+    <>
+      <Route index element={<Home />} />
+      <Route path="about" element={<About />} />
+      <Route path="ventures" element={<Ventures />} />
+      <Route path="easelect" element={<Easelect />} />
+      <Route path="products" element={<Navigate to={to('/products/magfusion')} replace />} />
+      <Route path="products/magfusion" element={<MagFusion />} />
+      <Route path="products/magfusion-air" element={<Navigate to={to('/products/magfusion')} replace />} />
+      <Route path="investors" element={<Investors />} />
+      <Route path="contact" element={<Contact />} />
+      <Route path="terms" element={<Terms />} />
+      <Route path="privacy" element={<Privacy />} />
+      <Route path="returns" element={<Returns />} />
+      <Route path="*" element={<NotFound />} />
+    </>
+  );
+}
 
 /**
  * Shared by the browser app and the build-time prerender.
@@ -20,21 +43,8 @@ import NotFound from './pages/NotFound';
 export default function AppRoutes() {
   return (
     <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<Home />} />
-        <Route path="about" element={<About />} />
-        <Route path="ventures" element={<Ventures />} />
-        <Route path="easelect" element={<Easelect />} />
-        <Route path="products" element={<Navigate to="/products/magfusion" replace />} />
-        <Route path="products/magfusion" element={<MagFusion />} />
-        <Route path="products/magfusion-air" element={<Navigate to="/products/magfusion" replace />} />
-        <Route path="investors" element={<Investors />} />
-        <Route path="contact" element={<Contact />} />
-        <Route path="terms" element={<Terms />} />
-        <Route path="privacy" element={<Privacy />} />
-        <Route path="returns" element={<Returns />} />
-        <Route path="*" element={<NotFound />} />
-      </Route>
+      <Route path="/ar" element={<Layout locale="ar" />}>{pages('ar')}</Route>
+      <Route path="/" element={<Layout locale="en" />}>{pages('en')}</Route>
     </Routes>
   );
 }

@@ -1,95 +1,105 @@
-import { SITE_URL, company, ventures } from './site.js';
+import { SITE_URL, company, founder, ventures } from './site.js';
+import { LOCALES, localeFromPath, localizePath, stripLocale } from '../i18n/locales.js';
 
 export const DEFAULT_OG_IMAGE = '/og/gizmentor-og.png';
 
-/** Per-route metadata. Used by the build-time prerender and by the client on navigation. */
-export const routeMeta = {
-  '/': {
-    title: 'GizMentor — Building technology that makes everyday decisions smarter',
-    description:
-      'GizMentor FZCO is a UAE-based technology and e-commerce company building AI-powered platforms and consumer technology products, including Easelect and MagFusion.',
-  },
-  '/about': {
-    title: 'About GizMentor — Technology & e-commerce company, Dubai',
-    description:
-      'GizMentor identifies real consumer problems and builds technology, AI-powered platforms and consumer products to solve them. Build, launch, scale.',
-  },
-  '/ventures': {
-    title: 'Ventures — The GizMentor portfolio',
-    description:
-      'GizMentor builds a portfolio of technology ventures: Easelect, an AI shopping research platform, and MagFusion, a consumer technology product line.',
-  },
-  '/easelect': {
-    title: 'Easelect — AI. Built for shopping. | A GizMentor venture',
-    description:
-      'Easelect is an AI shopping research and decision platform that turns a shopping need into a confident purchase decision, with evidence and prices. Operated by GizMentor FZCO.',
-    ogImage: '/og/easelect-og.png',
-  },
-  '/products/magfusion': {
-    title: 'MagFusion Air — Ultra-thin magnetic power bank | GizMentor',
-    description:
-      'MagFusion Air is an ultra-thin 5000mAh magnetic power bank for MagSafe-compatible iPhones, developed and commercialised by GizMentor and registered with the UAE TDRA.',
-    ogImage: '/og/magfusion-og.png',
-  },
-  '/investors': {
-    title: 'Investors & Partners — GizMentor',
-    description:
-      'An overview of GizMentor FZCO for prospective investors and strategic partners: vision, portfolio strategy, the Easelect opportunity and company foundation.',
-  },
-  '/contact': {
-    title: 'Contact GizMentor — Investors, partners & enquiries',
-    description: 'Talk to GizMentor about investment, partnerships, retail, Easelect or MagFusion.',
-  },
-  '/terms': { title: 'Terms of Use — GizMentor', description: 'Terms of Use for the GizMentor FZCO website.' },
-  '/privacy': { title: 'Privacy Policy — GizMentor', description: 'How GizMentor FZCO collects, uses and protects information.' },
-  '/returns': { title: 'Returns Policy — GizMentor', description: 'Returns policy for products purchased from GizMentor FZCO.' },
-  '/404': { title: 'Page not found — GizMentor', description: 'The page you are looking for does not exist.', noindex: true },
+/** Per-route settings that do not change with language. Titles and descriptions live in content.meta. */
+const routeSettings = {
+  '/': {},
+  '/about': {},
+  '/ventures': {},
+  '/easelect': { ogImage: '/og/easelect-og.png' },
+  '/products/magfusion': { ogImage: '/og/magfusion-og.png' },
+  '/investors': {},
+  '/contact': {},
+  '/terms': {},
+  '/privacy': {},
+  '/returns': {},
+  '/404': { noindex: true },
 };
 
-/** Routes emitted to sitemap.xml and prerendered (404 is prerendered separately). */
-export const indexableRoutes = Object.keys(routeMeta).filter((r) => !routeMeta[r].noindex);
+const basePaths = Object.keys(routeSettings).filter((r) => !routeSettings[r].noindex);
 
-export function getMeta(pathname) {
-  const meta = routeMeta[pathname] || routeMeta['/404'];
-  const canonical = SITE_URL + (pathname === '/' ? '/' : pathname);
-  return { ...meta, canonical, ogImage: SITE_URL + (meta.ogImage || DEFAULT_OG_IMAGE) };
+/** Every indexable URL path, in every locale — prerendered and listed in sitemap.xml. */
+export const indexableRoutes = Object.keys(LOCALES).flatMap((l) => basePaths.map((p) => localizePath(l, p)));
+
+/** Locale-neutral path for a route, or '/404' if it is not a known page. */
+function basePathOf(pathname) {
+  const base = stripLocale(pathname);
+  return routeSettings[base] ? base : '/404';
 }
 
-const organization = {
-  '@type': 'Organization',
-  '@id': `${SITE_URL}/#organization`,
-  name: company.legalName,
-  alternateName: company.name,
-  url: SITE_URL,
-  logo: `${SITE_URL}/og/gizmentor-logo.png`,
-  email: company.email,
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: `${company.address.line1}, ${company.address.line2}`,
-    addressLocality: company.address.city,
-    addressCountry: company.address.countryCode,
-  },
-  founder: { '@type': 'Person', name: 'Maurice Jallad', jobTitle: 'Founder & General Manager' },
-};
+const absolute = (path) => SITE_URL + (path === '/' ? '/' : path);
+
+/** { locale-code: absolute URL } for each language version of a page (plus x-default). */
+export function getAlternates(pathname) {
+  const base = basePathOf(pathname);
+  if (routeSettings[base].noindex) return {};
+  const alt = Object.fromEntries(Object.keys(LOCALES).map((l) => [l, absolute(localizePath(l, base))]));
+  return { ...alt, 'x-default': alt.en };
+}
+
+export function getMeta(pathname) {
+  const locale = localeFromPath(pathname);
+  const base = basePathOf(pathname);
+  const settings = routeSettings[base];
+  const { title, description } = LOCALES[locale].content.meta[base];
+  return {
+    title,
+    description,
+    noindex: Boolean(settings.noindex),
+    canonical: absolute(base === '/404' ? pathname : localizePath(locale, base)),
+    ogImage: SITE_URL + (settings.ogImage || DEFAULT_OG_IMAGE),
+    ogLocale: LOCALES[locale].ogLocale,
+    lang: locale,
+    dir: LOCALES[locale].dir,
+  };
+}
 
 /** JSON-LD graph for a given route. */
 export function getStructuredData(pathname) {
+  const locale = localeFromPath(pathname);
+  const base = basePathOf(pathname);
+  const c = LOCALES[locale].content;
+  const organization = {
+    '@type': 'Organization',
+    '@id': `${SITE_URL}/#organization`,
+    name: company.legalName,
+    alternateName: company.name,
+    url: SITE_URL,
+    logo: `${SITE_URL}/og/gizmentor-logo.png`,
+    email: company.email,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: `${c.common.address.line1}, ${c.common.address.line2}`,
+      addressLocality: c.common.address.city,
+      addressCountry: company.countryCode,
+    },
+    founder: { '@type': 'Person', name: founder.name, jobTitle: c.common.founder.title },
+  };
   const graph = [
     organization,
-    { '@type': 'WebSite', '@id': `${SITE_URL}/#website`, url: SITE_URL, name: company.name, publisher: { '@id': organization['@id'] } },
+    {
+      '@type': 'WebSite',
+      '@id': `${SITE_URL}/#website`,
+      url: SITE_URL,
+      name: company.name,
+      inLanguage: Object.keys(LOCALES),
+      publisher: { '@id': organization['@id'] },
+    },
   ];
-  if (pathname === '/products/magfusion') {
+  if (base === '/products/magfusion') {
     graph.push({
       '@type': 'Product',
       name: ventures.magfusion.name,
-      brand: { '@type': 'Brand', name: 'MagFusion' },
+      brand: { '@type': 'Brand', name: ventures.magfusion.family },
       manufacturer: { '@id': organization['@id'] },
-      description: routeMeta[pathname].description,
+      description: c.meta[base].description,
       image: `${SITE_URL}/og/magfusion-og.png`,
       category: 'Power banks',
     });
   }
-  if (pathname === '/easelect') {
+  if (base === '/easelect') {
     graph.push({
       '@type': 'WebApplication',
       name: ventures.easelect.name,
@@ -97,7 +107,7 @@ export function getStructuredData(pathname) {
       applicationCategory: 'ShoppingApplication',
       operatingSystem: 'Web',
       publisher: { '@id': organization['@id'] },
-      description: routeMeta[pathname].description,
+      description: c.meta[base].description,
     });
   }
   return { '@context': 'https://schema.org', '@graph': graph };

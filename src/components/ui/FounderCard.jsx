@@ -1,22 +1,25 @@
 import { founder } from '../../config/site';
-import { founderBio } from '../../content/corporate';
+import { useLocale } from '../../i18n/useLocale';
 
-export default function FounderCard({ compact = false }) {
-  const initials = founder.name.split(' ').map((n) => n[0]).join('');
+export default function FounderCard() {
+  const { t } = useLocale();
+  const f = t.common.founder;
   return (
-    <article className={`founder reveal ${compact ? 'is-compact' : ''}`}>
-      <div className="founder-portrait" aria-hidden={!founder.photo}>
+    <article className="founder reveal">
+      <div className="founder-portrait">
         {founder.photo ? (
-          <img src={founder.photo} alt={founder.name} width="320" height="400" loading="lazy" />
+          <img src={founder.photo} alt={f.name} width="240" height="240" loading="lazy" />
         ) : (
-          <span className="founder-initials">{initials}</span>
+          <span className="founder-initials latin" aria-hidden="true">{founder.initials}</span>
         )}
       </div>
-      <div className="founder-body">
-        <p className="eyebrow">Leadership</p>
-        <h3 className="founder-name">{founder.name}</h3>
-        <p className="founder-title">{founder.title}</p>
-        {founderBio.map((p) => <p key={p.slice(0, 20)} className="founder-text">{p}</p>)}
+      <div className="founder-id">
+        <p className="eyebrow">{f.eyebrow}</p>
+        <h2 className="founder-name">{f.name}</h2>
+        <p className="founder-title">{f.title}</p>
+      </div>
+      <div className="founder-bio">
+        {f.bio.map((p) => <p key={p.slice(0, 24)}>{p}</p>)}
       </div>
     </article>
   );

@@ -2,10 +2,11 @@ import { Link } from 'react-router-dom';
 import { ChevronRight } from 'lucide-react';
 import Button from '../components/ui/Button';
 import Section from '../components/ui/Section';
+import PillarGrid from '../components/ui/PillarGrid';
 import CtaBand from '../components/ui/CtaBand';
 import { StatusList } from '../components/ui/StatusBadge';
+import { useLocale } from '../i18n/useLocale';
 import { ventures } from '../config/site';
-import { magfusion } from '../content/magfusion';
 import heroImg from '../assets/magfusion/magfusion-hero.webp';
 import inHandImg from '../assets/magfusion/magfusion-in-hand.webp';
 import lifestyleImg from '../assets/magfusion/magfusion-lifestyle.webp';
@@ -14,59 +15,63 @@ import magneticImg from '../assets/magfusion/magfusion-magnetic.webp';
 import wiredImg from '../assets/magfusion/magfusion-wired.webp';
 
 const highlightImages = {
-  thin: { src: thinImg, w: 819, h: 1024, alt: 'MagFusion Air shown beside playing cards to illustrate its thin profile' },
-  magnetic: { src: magneticImg, w: 800, h: 800, alt: 'Illustration of the MagFusion Air magnetic charging ring' },
-  wired: { src: wiredImg, w: 1024, h: 768, alt: 'MagFusion Air charging a smartphone' },
+  thin: { src: thinImg, w: 819, h: 1024 },
+  magnetic: { src: magneticImg, w: 800, h: 800 },
+  wired: { src: wiredImg, w: 1024, h: 768 },
 };
 
 export default function MagFusion() {
-  const specs = magfusion.specs.filter((s) => s.value);
+  const { t, to } = useLocale();
+  const m = t.magfusion;
+  const venture = ventures.magfusion;
+  const specs = m.specs.items.filter((s) => s.value);
   return (
-    <div className="page-product">
+    <div data-venture="magfusion">
       <div className="container">
-        <nav className="breadcrumb" aria-label="Breadcrumb">
+        <nav className="breadcrumb" aria-label={m.breadcrumbAria}>
           <ol>
-            <li><Link to="/">Home</Link><ChevronRight size={14} aria-hidden="true" /></li>
-            <li><Link to="/ventures">Portfolio</Link><ChevronRight size={14} aria-hidden="true" /></li>
-            <li aria-current="page">MagFusion</li>
+            <li><Link to={to('/')}>{t.common.nav.home}</Link><ChevronRight size={14} aria-hidden="true" className="flip-rtl" /></li>
+            <li><Link to={to('/ventures')}>{m.breadcrumbPortfolio}</Link><ChevronRight size={14} aria-hidden="true" className="flip-rtl" /></li>
+            <li aria-current="page">{venture.family}</li>
           </ol>
         </nav>
       </div>
 
-      <section className="product-hero" aria-labelledby="mf-title">
-        <div className="container feature-grid">
+      <section className="hero hero-split product-hero" aria-labelledby="mf-title">
+        <div className="container hero-media-grid">
           <div>
-            <p className="eyebrow reveal">MagFusion · A GizMentor product</p>
-            <h1 id="mf-title" className="display display-md reveal reveal-delay-1">{magfusion.name}</h1>
-            <p className="product-tagline reveal reveal-delay-1">{magfusion.tagline}</p>
-            <p className="hero-lead reveal reveal-delay-2">{magfusion.summary}</p>
-            <StatusList items={ventures.magfusion.status} />
+            <p className="badge reveal"><span className="badge-dot" aria-hidden="true" />{m.hero.eyebrow}</p>
+            <h1 id="mf-title" className="display reveal reveal-delay-1"><span className="latin">{venture.name}</span></h1>
+            <p className="product-tagline reveal reveal-delay-1">{m.hero.tagline}</p>
+            <p className="hero-lead reveal reveal-delay-2">{m.hero.summary}</p>
+            <StatusList items={venture.status} />
             <div className="btn-row reveal reveal-delay-3">
-              <Button to="/contact?type=magfusion&product=magfusion-air">Enquire to buy</Button>
-              <Button to="/contact?type=retail" variant="secondary">Retail &amp; wholesale</Button>
+              <Button to="/contact?type=magfusion&product=magfusion-air">{m.hero.primary}</Button>
+              <Button to="/contact?type=retail" variant="secondary">{m.hero.secondary}</Button>
             </div>
           </div>
-          <div className="product-hero-media reveal reveal-delay-2">
-            <img src={heroImg} alt="MagFusion Air magnetic power bank" width="1024" height="576" fetchPriority="high" />
+          <div className="media-frame reveal reveal-delay-2">
+            <img src={heroImg} alt={m.hero.imageAlt} width="1024" height="576" fetchPriority="high" />
           </div>
         </div>
       </section>
 
-      <Section eyebrow="The refinement" width="narrow">
-        <p className="statement reveal">{magfusion.story}</p>
+      <Section tone="muted" eyebrow={m.story.eyebrow} width="narrow">
+        <p className="statement reveal">{m.story.text}</p>
       </Section>
 
-      <section className="highlights" aria-label="Product highlights">
+      <section className="section highlights" aria-label={m.highlightsAria}>
         <div className="container">
-          {magfusion.highlights.map((h, i) => {
+          {m.highlights.map((h, i) => {
             const img = highlightImages[h.key];
             return (
               <article key={h.key} className={`highlight ${i % 2 ? 'is-reversed' : ''}`}>
-                <div className="highlight-media reveal">
-                  <img src={img.src} alt={img.alt} width={img.w} height={img.h} loading="lazy" />
+                <div className="media-frame reveal">
+                  <img src={img.src} alt={h.alt} width={img.w} height={img.h} loading="lazy" />
                 </div>
                 <div className="highlight-copy reveal reveal-delay-1">
-                  <h2 className="h2">{h.title}</h2>
+                  <p className="eyebrow">0{i + 1}</p>
+                  <h2 className="section-title">{h.title}</h2>
                   <p className="section-lead">{h.desc}</p>
                 </div>
               </article>
@@ -75,45 +80,34 @@ export default function MagFusion() {
         </div>
       </section>
 
-      <section className="gallery" aria-label="MagFusion Air in use">
+      <section className="section section-tight" aria-label={m.galleryAria}>
         <div className="container gallery-grid">
-          <img className="reveal" src={lifestyleImg} alt="MagFusion Air on a table in an airport lounge" width="1248" height="832" loading="lazy" />
-          <img className="reveal reveal-delay-1" src={inHandImg} alt="Person on a call with MagFusion Air attached to their phone" width="1000" height="1001" loading="lazy" />
+          <div className="media-frame reveal"><img src={lifestyleImg} alt={m.gallery.lifestyle} width="1248" height="832" loading="lazy" /></div>
+          <div className="media-frame reveal reveal-delay-1"><img src={inHandImg} alt={m.gallery.inHand} width="1000" height="1001" loading="lazy" /></div>
         </div>
       </section>
 
-      <Section eyebrow="Specifications" title="Technical details." width="narrow" id="specs">
-        <dl className="specs reveal">
-          {specs.map((s) => (
-            <div key={s.label} className="spec"><dt>{s.label}</dt><dd>{s.value}</dd></div>
-          ))}
+      <Section layout="split" eyebrow={m.specs.eyebrow} title={m.specs.title} id="specs">
+        <dl className="facts reveal">
+          {specs.map((s) => <div key={s.label}><dt>{s.label}</dt><dd>{s.value}</dd></div>)}
         </dl>
       </Section>
 
-      <Section eyebrow="How it was made" title="Select. Test. Refine.">
-        <ol className="pillars">
-          {magfusion.method.map((m, i) => (
-            <li key={m.title} className={`pillar reveal reveal-delay-${i + 1}`}>
-              <span className="pillar-index" aria-hidden="true">0{i + 1}</span>
-              <h3 className="pillar-title">{m.title}</h3>
-              <p>{m.body}</p>
-            </li>
-          ))}
-        </ol>
+      <Section tone="muted" eyebrow={m.method.eyebrow} title={m.method.title}>
+        <PillarGrid items={m.method.items} />
       </Section>
 
-      <Section eyebrow="Compliance" title="Registered for the UAE market." width="narrow">
-        <p className="section-lead reveal">{ventures.magfusion.regulatory.statement}</p>
-        <p className="disclaimer reveal">
-          Product registration confirms the device’s type approval for the UAE market. It is not an endorsement of the product or of GizMentor.
-        </p>
+      <Section layout="split" eyebrow={m.compliance.eyebrow} title={m.compliance.title}>
+        <p className="section-lead reveal">{t.common.tdra}</p>
+        {venture.tdraRegistrationNumber && <p className="fine">{m.compliance.regNo} <span className="latin">{venture.tdraRegistrationNumber}</span></p>}
+        <p className="disclaimer reveal">{m.compliance.disclaimer}</p>
       </Section>
 
       <CtaBand
-        title="Get MagFusion Air."
-        body="For individual orders, retail stocking or wholesale enquiries, contact our team."
-        primary={{ to: '/contact?type=magfusion&product=magfusion-air', label: 'Enquire about MagFusion Air' }}
-        secondary={{ to: '/returns', label: 'Returns policy' }}
+        title={m.cta.title}
+        body={m.cta.body}
+        primary={{ to: '/contact?type=magfusion&product=magfusion-air', label: m.cta.primary }}
+        secondary={{ to: '/returns', label: m.cta.secondary }}
       />
     </div>
   );

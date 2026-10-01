@@ -1,47 +1,51 @@
+import PageHero from '../components/ui/PageHero';
 import Section from '../components/ui/Section';
 import PillarGrid from '../components/ui/PillarGrid';
 import CapabilityGrid from '../components/ui/CapabilityGrid';
 import FounderCard from '../components/ui/FounderCard';
 import CtaBand from '../components/ui/CtaBand';
+import { useLocale } from '../i18n/useLocale';
 import { company } from '../config/site';
 
 export default function About() {
+  const { t } = useLocale();
+  const a = t.about;
+  const { address } = t.common;
   return (
     <>
-      <section className="page-hero" aria-labelledby="a-title">
-        <div className="container">
-          <p className="eyebrow reveal">About GizMentor</p>
-          <h1 id="a-title" className="display display-md reveal reveal-delay-1">We start with the problem. Then we build what solves it.</h1>
-          <p className="hero-lead reveal reveal-delay-2">
-            {company.legalName} is a UAE-based technology and e-commerce company. We identify real consumer problems and build technology,
-            AI-powered platforms and consumer products to solve them.
-          </p>
-        </div>
-      </section>
+      <PageHero id="about-title" eyebrow={a.hero.eyebrow} title={a.hero.title} lead={a.hero.lead} />
 
-      <Section eyebrow="What we do" title="Four areas, one purpose.">
+      <Section eyebrow={a.whatWeDo.eyebrow} title={a.whatWeDo.title}>
         <ul className="card-grid card-grid-4">
-          <li className="card reveal"><h3>E-commerce</h3><p>Selling and enabling commerce online.</p></li>
-          <li className="card reveal reveal-delay-1"><h3>Digital products</h3><p>Technology-driven platforms such as Easelect.</p></li>
-          <li className="card reveal reveal-delay-2"><h3>Consumer technology</h3><p>Physical products such as MagFusion.</p></li>
-          <li className="card reveal reveal-delay-3"><h3>Telecom equipment trading</h3><p>Wireless telecommunications equipment.</p></li>
+          {a.whatWeDo.items.map((item, i) => (
+            <li key={item.title} className={`card reveal reveal-delay-${(i % 3) + 1}`}><h3>{item.title}</h3><p>{item.body}</p></li>
+          ))}
         </ul>
       </Section>
 
-      <Section eyebrow="How we work" title="Build. Launch. Scale.">
+      <Section tone="muted" eyebrow={a.model.eyebrow} title={a.model.title}>
         <PillarGrid />
       </Section>
 
-      <Section eyebrow="Capabilities" title="Everything a product needs to reach the market.">
+      <Section eyebrow={a.capabilities.eyebrow} title={a.capabilities.title}>
         <CapabilityGrid />
       </Section>
 
-      <Section><FounderCard /></Section>
+      <Section layout="split" eyebrow={a.facts.eyebrow} title={a.facts.title}>
+        <dl className="facts reveal">
+          <div><dt>{a.facts.entity}</dt><dd className="latin">{company.legalName}</dd></div>
+          <div><dt>{a.facts.headquarters}</dt><dd>{address.line1}, {address.line2}, {address.city}</dd></div>
+          <div><dt>{a.facts.licensed}</dt><dd>{t.common.licensedActivities.join(' · ')}</dd></div>
+          <div><dt>{a.facts.trademark}</dt><dd>{t.common.trademark}</dd></div>
+        </dl>
+      </Section>
+
+      <Section tone="muted"><FounderCard /></Section>
 
       <CtaBand
-        title="Work with GizMentor."
-        primary={{ to: '/contact', label: 'Get in touch' }}
-        secondary={{ to: '/ventures', label: 'See our ventures' }}
+        title={a.cta.title}
+        primary={{ to: '/contact', label: a.cta.primary }}
+        secondary={{ to: '/ventures', label: a.cta.secondary }}
       />
     </>
   );

@@ -1,9 +1,9 @@
-import React from 'react';
+import LegalPage from '../components/ui/LegalPage';
 
 export default function Returns() {
 
   return (
-    <div className="page-terms container container-narrow">
+    <LegalPage kind="returns">
       <article className="terms-content reveal">
         <h1 className="terms-title">Returns Policy</h1>
         <p className="terms-effective">Effective Date: March 15, 2026</p>
@@ -62,6 +62,6 @@ export default function Returns() {
           </p>
         </section>
       </article>
-    </div>
+    </LegalPage>
   );
 }

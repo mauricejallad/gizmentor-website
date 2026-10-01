@@ -1,55 +1,40 @@
 import { Check, Search, Sparkles, Store } from 'lucide-react';
+import { useLocale } from '../../i18n/useLocale';
 
 /**
  * Illustrative Easelect conversation, built in HTML/CSS (no image weight).
  * Product names are deliberately generic — replace with real screenshots when available.
  */
 export default function EaselectMockup({ className = '' }) {
+  const { t } = useLocale();
+  const m = t.easelect.mockup;
   return (
-    <figure className={`es-mock ${className}`}>
-      <div className="es-phone" aria-hidden="true">
-        <div className="es-notch" />
-        <div className="es-screen">
-          <div className="es-appbar">
-            <span className="es-wordmark">easelect</span>
-            <span className="es-appbar-pill">AI shopping research</span>
-          </div>
-
-          <div className="es-msg es-user es-step" style={{ '--i': 0 }}>
-            I need headphones for long flights — comfortable, great noise cancelling, under AED 1,000.
-          </div>
-
-          <div className="es-card es-step" style={{ '--i': 1 }}>
-            <p className="es-card-label"><Sparkles size={13} /> Your requirements</p>
-            <ul className="es-tags">
-              <li>All-day comfort</li>
-              <li>Strong ANC</li>
-              <li>≤ AED 1,000</li>
-            </ul>
-          </div>
-
-          <div className="es-card es-step" style={{ '--i': 2 }}>
-            <p className="es-card-label"><Search size={13} /> Researching</p>
-            <ul className="es-sources">
-              <li><Check size={13} /> Specifications</li>
-              <li><Check size={13} /> Expert reviews</li>
-              <li><Check size={13} /> YouTube reviews</li>
-              <li><Check size={13} /> Reddit discussions</li>
-            </ul>
-          </div>
-
-          <div className="es-card es-pick es-step" style={{ '--i': 3 }}>
-            <p className="es-pick-badge">Best match for you</p>
-            <p className="es-pick-name">Over-ear ANC · Option A</p>
-            <p className="es-pick-why">Most consistent praise for comfort on long wear, with top-tier noise cancelling in your budget.</p>
-            <div className="es-pick-row">
-              <span>2 alternatives compared</span>
-              <span className="es-pick-cta"><Store size={13} /> View prices</span>
-            </div>
+    <figure className={`es-mock ${className}`.trim()}>
+      <div className="es-screen" aria-hidden="true">
+        <div className="es-appbar">
+          <span className="es-wordmark latin">easelect</span>
+          <span className="es-appbar-pill">{m.pill}</span>
+        </div>
+        <div className="es-msg es-step" style={{ '--i': 0 }}>{m.message}</div>
+        <div className="es-card es-step" style={{ '--i': 1 }}>
+          <p className="es-card-label"><Sparkles size={13} /> {m.requirements}</p>
+          <ul className="es-tags">{m.tags.map((tag) => <li key={tag}>{tag}</li>)}</ul>
+        </div>
+        <div className="es-card es-step" style={{ '--i': 2 }}>
+          <p className="es-card-label"><Search size={13} /> {m.researching}</p>
+          <ul className="es-sources">{m.sources.map((s) => <li key={s}><Check size={13} /> {s}</li>)}</ul>
+        </div>
+        <div className="es-card es-pick es-step" style={{ '--i': 3 }}>
+          <p className="es-pick-badge">{m.badge}</p>
+          <p className="es-pick-name">{m.pickName}</p>
+          <p className="es-pick-why">{m.pickWhy}</p>
+          <div className="es-pick-row">
+            <span>{m.compared}</span>
+            <span className="es-pick-cta"><Store size={13} /> {m.prices}</span>
           </div>
         </div>
       </div>
-      <figcaption className="es-caption">Illustrative interface</figcaption>
+      <figcaption className="es-caption">{m.caption}</figcaption>
     </figure>
   );
 }

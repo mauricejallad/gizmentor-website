@@ -1,17 +1,23 @@
 import Button from '../components/ui/Button';
+import PageHero from '../components/ui/PageHero';
+import { useLocale } from '../i18n/useLocale';
 
 export default function NotFound() {
+  const { t } = useLocale();
+  const n = t.notFound;
   return (
-    <section className="page-hero not-found" aria-labelledby="nf-title">
-      <div className="container">
-        <p className="eyebrow">404</p>
-        <h1 id="nf-title" className="display display-md">This page doesn’t exist.</h1>
-        <p className="hero-lead">It may have moved as part of our new website.</p>
-        <div className="btn-row">
-          <Button to="/">Go to homepage</Button>
-          <Button to="/ventures" variant="secondary">Our ventures</Button>
-        </div>
-      </div>
-    </section>
+    <PageHero
+      id="nf-title"
+      className="not-found"
+      eyebrow={n.eyebrow}
+      title={n.title}
+      lead={n.lead}
+      actions={
+        <>
+          <Button to="/">{n.home}</Button>
+          <Button to="/ventures" variant="secondary">{n.ventures}</Button>
+        </>
+      }
+    />
   );
 }

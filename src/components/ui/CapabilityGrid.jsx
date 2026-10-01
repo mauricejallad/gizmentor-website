@@ -1,16 +1,23 @@
-import { Compass, PenTool, Sparkles, Cpu, ShoppingBag, Rocket } from 'lucide-react';
-import { capabilities } from '../../content/corporate';
+import {
+  BadgeCheck, BrainCircuit, Compass, Cpu, FileSearch, Layers, PenTool, Rocket, Scale, ShoppingBag, Sparkles, Store,
+} from 'lucide-react';
+import { useLocale } from '../../i18n/useLocale';
 
-const icons = { Compass, PenTool, Sparkles, Cpu, ShoppingBag, Rocket };
+const icons = { BadgeCheck, BrainCircuit, Compass, Cpu, FileSearch, Layers, PenTool, Rocket, Scale, ShoppingBag, Sparkles, Store };
 
-export default function CapabilityGrid() {
+/** Icon + title + body grid. Defaults to the company capabilities; pass `items` to reuse the layout. */
+export default function CapabilityGrid({ items }) {
+  const { t } = useLocale();
+  const list = items || t.common.capabilities;
   return (
     <ul className="capabilities">
-      {capabilities.map((c, i) => {
+      {list.map((c, i) => {
         const Icon = icons[c.icon];
         return (
           <li key={c.title} className={`capability reveal reveal-delay-${(i % 3) + 1}`}>
-            <Icon size={22} strokeWidth={1.6} aria-hidden="true" className="capability-icon" />
+            {Icon && (
+              <span className="icon-tile" aria-hidden="true"><Icon size={20} strokeWidth={1.6} /></span>
+            )}
             <h3>{c.title}</h3>
             <p>{c.body}</p>
           </li>

@@ -1,13 +1,17 @@
 import { useState, useSyncExternalStore } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Mail, MapPin } from 'lucide-react';
+import { useLocale } from '../i18n/useLocale';
 import { company, inquiryTypes } from '../config/site';
 
-const validTypes = new Set(inquiryTypes.map((t) => t.value));
+const validTypes = new Set(inquiryTypes);
 const empty = { name: '', email: '', organisation: '', message: '' };
 const noopSubscribe = () => () => {};
 
 export default function Contact() {
+  const { t } = useLocale();
+  const c = t.contact;
+  const { address } = t.common;
   const [params] = useSearchParams();
   const initialType = validTypes.has(params.get('type')) ? params.get('type') : 'general';
   const product = params.get('product');
@@ -24,60 +28,68 @@ export default function Contact() {
   // addressed to company.email. Swap this for a form endpoint (e.g. an n8n webhook) when ready.
   const onSubmit = (e) => {
     e.preventDefault();
-    const typeLabel = inquiryTypes.find((t) => t.value === inquiryType)?.label || inquiryType;
-    const subject = encodeURIComponent(`${typeLabel} enquiry from ${form.name}`);
+    const typeLabel = c.types[inquiryType];
+    const l = c.mail;
+    const subject = encodeURIComponent(l.subject(typeLabel, form.name));
     const body = encodeURIComponent(
-      `Name: ${form.name}\nEmail: ${form.email}\nOrganisation: ${form.organisation || '—'}\n` +
-        `Enquiry type: ${typeLabel}\n${product ? `Product: ${product}\n` : ''}\nMessage:\n${form.message}`,
+      `${l.name}: ${form.name}\n${l.email}: ${form.email}\n${l.organisation}: ${form.organisation || '—'}\n` +
+        `${l.type}: ${typeLabel}\n${product ? `${l.product}: ${product}\n` : ''}\n${l.message}:\n${form.message}`,
     );
     window.location.href = `mailto:${company.email}?subject=${subject}&body=${body}`;
     setSent(true);
   };
 
   return (
-    <section className="page-hero page-contact" aria-labelledby="c-title">
+    <section className="page-hero page-contact" aria-labelledby="contact-title">
       <div className="container contact-grid">
         <div>
-          <p className="eyebrow">Contact</p>
-          <h1 id="c-title" className="display display-md">Talk to GizMentor.</h1>
-          <p className="hero-lead">Investors, partners, retailers and customers — tell us what you have in mind and the right person will respond.</p>
+          <p className="badge"><span className="badge-dot" aria-hidden="true" />{c.eyebrow}</p>
+          <h1 id="contact-title" className="display">{c.title}</h1>
+          <p className="hero-lead">{c.lead}</p>
           <ul className="contact-details">
-            <li><Mail size={18} aria-hidden="true" /><a href={`mailto:${company.email}`}>{company.email}</a></li>
-            <li><MapPin size={18} aria-hidden="true" /><span>{company.legalName}<br />{company.address.line1}, {company.address.line2}<br />{company.address.city}, {company.address.country}</span></li>
+            <li>
+              <span className="icon-tile" aria-hidden="true"><Mail size={18} strokeWidth={1.6} /></span>
+              <span><span className="contact-label">{c.emailLabel}</span><a href={`mailto:${company.email}`} className="latin">{company.email}</a></span>
+            </li>
+            <li>
+              <span className="icon-tile" aria-hidden="true"><MapPin size={18} strokeWidth={1.6} /></span>
+              <span>
+                <span className="contact-label">{c.addressLabel}</span>
+                <span className="latin">{company.legalName}</span><br />
+                {address.line1}, {address.line2}<br />
+                {address.city}, {address.country}
+              </span>
+            </li>
           </ul>
         </div>
 
-        <form onSubmit={onSubmit} className="contact-form" noValidate={false}>
+        <form onSubmit={onSubmit} className="contact-form">
           <div className="form-row">
             <div className="form-group">
-              <label htmlFor="name">Name</label>
+              <label htmlFor="name">{c.fields.name}</label>
               <input id="name" name="name" autoComplete="name" value={form.name} onChange={onChange} required className="form-control" />
             </div>
             <div className="form-group">
-              <label htmlFor="email">Email</label>
-              <input id="email" type="email" name="email" autoComplete="email" value={form.email} onChange={onChange} required className="form-control" />
+              <label htmlFor="email">{c.fields.email}</label>
+              <input id="email" type="email" name="email" dir="ltr" autoComplete="email" value={form.email} onChange={onChange} required className="form-control" />
             </div>
           </div>
           <div className="form-group">
-            <label htmlFor="organisation">Organisation <span className="optional">(optional)</span></label>
+            <label htmlFor="organisation">{c.fields.organisation} <span className="optional">{c.fields.optional}</span></label>
             <input id="organisation" name="organisation" autoComplete="organization" value={form.organisation} onChange={onChange} className="form-control" />
           </div>
           <div className="form-group">
-            <label htmlFor="inquiryType">Enquiry type</label>
+            <label htmlFor="inquiryType">{c.fields.type}</label>
             <select id="inquiryType" name="inquiryType" value={inquiryType} onChange={onChange} className="form-control">
-              {inquiryTypes.map((t) => <option key={t.value} value={t.value}>{t.label}</option>)}
+              {inquiryTypes.map((v) => <option key={v} value={v}>{c.types[v]}</option>)}
             </select>
           </div>
           <div className="form-group">
-            <label htmlFor="message">Message</label>
+            <label htmlFor="message">{c.fields.message}</label>
             <textarea id="message" name="message" rows="6" value={form.message} onChange={onChange} required className="form-control" />
           </div>
-          <button type="submit" className="btn btn-primary btn-block">Send enquiry</button>
-          <p className="form-note" role="status">
-            {sent
-              ? `Your email app should now open with your message. If it didn’t, write to us at ${company.email}.`
-              : 'Submitting opens your email app with the message ready to send.'}
-          </p>
+          <button type="submit" className="btn btn-primary btn-block">{c.submit}</button>
+          <p className="form-note" role="status">{sent ? c.noteAfter(company.email) : c.noteBefore}</p>
         </form>
       </div>
     </section>

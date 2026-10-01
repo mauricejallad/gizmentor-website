@@ -1,9 +1,9 @@
-import React from 'react';
+import LegalPage from '../components/ui/LegalPage';
 
 export default function Privacy() {
 
   return (
-    <div className="page-terms container container-narrow">
+    <LegalPage kind="privacy">
       <article className="terms-content reveal">
         <h1 className="terms-title">Privacy Policy</h1>
         <p className="terms-effective">Effective Date: March 15, 2026</p>
@@ -110,6 +110,6 @@ export default function Privacy() {
           </p>
         </section>
       </article>
-    </div>
+    </LegalPage>
   );
 }
