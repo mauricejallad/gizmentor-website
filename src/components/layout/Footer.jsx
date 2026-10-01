@@ -45,7 +45,7 @@ export default function Footer() {
         </div>
         <div className="footer-bottom">
           <p>&copy; {year} <span className="latin">{company.legalName}</span>. {footer.rights}</p>
-          <p>{t.common.trademark}</p>
+          <p>{footer.registered} <span className="latin">{company.registeredName}</span> · {t.common.trademark}</p>
         </div>
       </div>
     </footer>

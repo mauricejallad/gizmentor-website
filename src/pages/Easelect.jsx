@@ -1,7 +1,6 @@
-import { Globe, Smartphone } from 'lucide-react';
+import { Globe, Smartphone, X } from 'lucide-react';
 import Button from '../components/ui/Button';
 import Section from '../components/ui/Section';
-import CapabilityGrid from '../components/ui/CapabilityGrid';
 import CtaBand from '../components/ui/CtaBand';
 import StatusBadge, { StatusList } from '../components/ui/StatusBadge';
 import AppScreens from '../components/easelect/AppScreens';
@@ -34,20 +33,37 @@ export default function Easelect() {
         </div>
       </section>
 
-      <Section eyebrow={e.problem.eyebrow} title={e.problem.title}>
-        <ul className="card-grid card-grid-3">
-          {e.problem.items.map((p, i) => (
-            <li key={p.title} className={`card reveal reveal-delay-${i + 1}`}><h3>{p.title}</h3><p>{p.body}</p></li>
+      {/* The customer's challenge */}
+      <Section layout="split" eyebrow={e.problem.eyebrow} title={e.problem.title}>
+        <ul className="issue-list reveal">
+          {e.problem.items.map((item) => (
+            <li key={item}><span className="issue-icon" aria-hidden="true"><X size={14} strokeWidth={2} /></span>{item}</li>
           ))}
         </ul>
       </Section>
 
-      <Section tone="muted" eyebrow={e.solution.eyebrow} title={e.solution.title} width="narrow">
+      {/* Understanding before recommending */}
+      <Section tone="muted" eyebrow={e.solution.eyebrow} width="narrow">
         <p className="statement reveal">{e.solution.statement}<span className="text-muted">{e.solution.muted}</span></p>
       </Section>
 
+      {/* The six-step journey, with real app screens */}
       <Section eyebrow={e.journey.eyebrow} title={e.journey.title}>
         <JourneySteps />
+        <p className="fine journey-note reveal">{e.journey.continuity}</p>
+      </Section>
+
+      {/* Intelligence engine */}
+      <Section tone="muted" eyebrow={e.engine.eyebrow} title={e.engine.title} lead={e.engine.lead}>
+        <ol className="engine">
+          {e.engine.steps.map((s, i) => (
+            <li key={s.title} className={`engine-step reveal reveal-delay-${(i % 3) + 1}`}>
+              <span className="engine-index">{String(i + 1).padStart(2, '0')}</span>
+              <h3>{s.title}</h3>
+              <p>{s.body}</p>
+            </li>
+          ))}
+        </ol>
       </Section>
 
       <Section eyebrow={e.platform.eyebrow} title={e.platform.title}>
@@ -67,14 +83,36 @@ export default function Easelect() {
         </div>
       </Section>
 
-      <Section tone="muted" eyebrow={e.technology.eyebrow} title={e.technology.title}>
-        <CapabilityGrid items={e.technology.items} />
+      {/* Categories and markets */}
+      <Section tone="muted" eyebrow={e.categories.eyebrow} title={e.categories.title} lead={e.categories.note}>
+        <ul className="card-grid card-grid-3">
+          {e.categories.items.map((c, i) => (
+            <li key={c.title} className={`card reveal reveal-delay-${i + 1}`}><h3>{c.title}</h3><p>{c.body}</p></li>
+          ))}
+        </ul>
+        <dl className="markets reveal">
+          <div className="market is-now">
+            <dt>{e.categories.marketLabel}</dt>
+            <dd className="market-name">{e.categories.market}</dd>
+            <dd className="market-body">{e.categories.marketBody}</dd>
+          </div>
+          <div className="market">
+            <dt>{e.categories.nextLabel}</dt>
+            <dd className="market-name">{e.categories.next}</dd>
+            <dd className="market-body">{e.categories.nextBody}</dd>
+          </div>
+        </dl>
       </Section>
 
-      <Section layout="split" eyebrow={e.market.eyebrow} title={e.market.title} lead={e.market.lead}>
-        <ul className="point-list reveal">
-          {e.market.points.map((p) => <li key={p.strong}><strong>{p.strong}</strong><span>{p.text}</span></li>)}
-        </ul>
+      {/* Partnership value and business model */}
+      <Section layout="split" eyebrow={e.partnership.eyebrow} title={e.partnership.title}>
+        <dl className="facts facts-principles reveal">
+          {e.partnership.items.map((p) => <div key={p.title}><dt>{p.title}</dt><dd>{p.body}</dd></div>)}
+        </dl>
+        <div className="note-panel reveal">
+          <p className="note-panel-title">{e.partnership.modelTitle}</p>
+          <p>{e.partnership.model}</p>
+        </div>
       </Section>
 
       <CtaBand

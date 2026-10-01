@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import PageHero from '../components/ui/PageHero';
 import Section from '../components/ui/Section';
-import PillarGrid from '../components/ui/PillarGrid';
 import MetricGrid from '../components/ui/MetricGrid';
 import CtaBand from '../components/ui/CtaBand';
 import Button from '../components/ui/Button';
@@ -49,7 +48,15 @@ export default function Investors() {
       </Section>
 
       <Section id="strategy" tone="muted" eyebrow={eyebrow('strategy')} title={v.strategy.title} lead={v.strategy.lead}>
-        <PillarGrid />
+        <ol className="timeline timeline-labelled">
+          {t.about.evolution.items.map((s, i) => (
+            <li key={s.title} className={`timeline-item reveal reveal-delay-${(i % 3) + 1}`}>
+              <p className="timeline-label">{s.label}</p>
+              <h3>{s.title}</h3>
+              <p>{s.body}</p>
+            </li>
+          ))}
+        </ol>
       </Section>
 
       <Section id="easelect" layout="split" eyebrow={eyebrow('easelect')} title={v.easelect.title}>
@@ -108,15 +115,12 @@ export default function Investors() {
         <p className="disclaimer reveal">{v.foundation.disclaimer}</p>
       </Section>
 
-      <Section id="growth" eyebrow={eyebrow('growth')} title={v.growth.title}>
-        <ol className="timeline">
+      <Section id="growth" eyebrow={eyebrow('growth')} title={v.growth.title} lead={v.growth.note}>
+        <ul className="card-grid card-grid-3">
           {v.growth.items.map((g, i) => (
-            <li key={g.title} className={`timeline-item reveal reveal-delay-${(i % 3) + 1}`}>
-              <h3>{g.title}</h3>
-              <p>{g.body}</p>
-            </li>
+            <li key={g.title} className={`card reveal reveal-delay-${(i % 3) + 1}`}><h3>{g.title}</h3><p>{g.body}</p></li>
           ))}
-        </ol>
+        </ul>
       </Section>
 
       <CtaBand

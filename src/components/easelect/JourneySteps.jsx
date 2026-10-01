@@ -2,7 +2,7 @@ import { useLocale } from '../../i18n/useLocale';
 import { PhoneShot } from './AppScreens';
 
 /** The app screen that illustrates each journey stage, in stage order. */
-const stageScreens = ['home', 'question', 'product', 'prices'];
+const stageScreens = ['home', 'question', 'sources', 'compare', 'prices', 'product'];
 
 export default function JourneySteps() {
   const { t } = useLocale();
@@ -14,7 +14,7 @@ export default function JourneySteps() {
           <div className="journey-copy">
             <span className="journey-index" aria-hidden="true">{i + 1}</span>
             <h3>{s.title}</h3>
-            <ul>{s.items.map((it) => <li key={it}>{it}</li>)}</ul>
+            <p>{s.body}</p>
           </div>
         </li>
       ))}

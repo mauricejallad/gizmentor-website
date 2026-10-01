@@ -65,7 +65,7 @@ export function getStructuredData(pathname) {
     '@type': 'Organization',
     '@id': `${SITE_URL}/#organization`,
     name: company.legalName,
-    alternateName: company.name,
+    alternateName: [company.name, company.registeredName],
     url: SITE_URL,
     logo: `${SITE_URL}/og/gizmentor-logo.png`,
     email: company.email,

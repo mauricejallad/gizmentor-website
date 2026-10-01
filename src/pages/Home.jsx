@@ -6,6 +6,7 @@ import VentureCards from '../components/ui/VentureCards';
 import LinkRows from '../components/ui/LinkRows';
 import CtaBand from '../components/ui/CtaBand';
 import ModelDiagram from '../components/home/ModelDiagram';
+import NameEquation from '../components/home/NameEquation';
 import { useLocale } from '../i18n/useLocale';
 
 export default function Home() {
@@ -33,27 +34,33 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 2 — Ventures */}
+      {/* 2 — Who we are: philosophy and the name */}
+      <Section layout="split" eyebrow={h.philosophy.eyebrow} title={h.philosophy.title} lead={h.philosophy.body}>
+        <NameEquation />
+        <div className="btn-row"><Button to="/about" variant="secondary">{h.philosophy.more}</Button></div>
+      </Section>
+
+      {/* 3 — Ventures */}
       <Section eyebrow={h.ventures.eyebrow} title={h.ventures.title}>
         <VentureCards />
       </Section>
 
-      {/* 3 — Partnerships: the primary audience */}
+      {/* 4 — Partnerships: the primary audience */}
       <Section tone="muted" layout="split" eyebrow={h.partners.eyebrow} title={h.partners.title} lead={h.partners.lead}>
         <LinkRows rows={h.partners.rows} />
       </Section>
 
-      {/* 4 — Operating model */}
+      {/* 5 — Operating model */}
       <Section id="model" eyebrow={h.model.eyebrow} title={h.model.title} lead={h.model.lead}>
         <PillarGrid />
       </Section>
 
-      {/* 5 — Capabilities */}
+      {/* 6 — Capabilities */}
       <Section eyebrow={h.capabilities.eyebrow} title={h.capabilities.title} lead={h.capabilities.lead}>
         <CapabilityGrid />
       </Section>
 
-      {/* 6 — Close */}
+      {/* 7 — Close */}
       <CtaBand
         title={h.cta.title}
         body={h.cta.body}

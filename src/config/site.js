@@ -11,6 +11,7 @@ export const SITE_URL = 'https://gizmentor.com';
 export const company = {
   name: 'GizMentor',
   legalName: 'GizMentor FZCO',
+  registeredName: 'GIZMENTOR - FZCO', // as on the trade licence
   founded: null, // e.g. '2024' — hidden until confirmed
   countryCode: 'AE',
   email: 'info@gizmentor.com',
