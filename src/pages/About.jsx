@@ -1,43 +1,48 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import useScrollReveal from '../hooks/useScrollReveal';
+import Section from '../components/ui/Section';
+import PillarGrid from '../components/ui/PillarGrid';
+import CapabilityGrid from '../components/ui/CapabilityGrid';
+import FounderCard from '../components/ui/FounderCard';
+import CtaBand from '../components/ui/CtaBand';
+import { company } from '../config/site';
 
 export default function About() {
-  useScrollReveal();
   return (
-    <div className="page-about">
-      {/* Brand Clarification */}
-      <section className="about-clarification reveal">
-        <h1 className="page-title">The Standard</h1>
-        <p className="page-subtitle">We don't manufacture from scratch. We source practical tools, rigorously test them, and re-engineer their weak points into premium experiences.</p>
-      </section>
-
-      {/* Methodology */}
-      <section className="about-methodology">
-        <div className="method-blocks">
-          <div className="method-block reveal reveal-delay-1">
-            <span className="method-number">01.</span>
-            <h3>Select.</h3>
-            <p>We source practical, high-utility products that suffer from compromised build quality or poor execution.</p>
-          </div>
-          <div className="method-block reveal reveal-delay-2">
-            <span className="method-number">02.</span>
-            <h3>Test.</h3>
-            <p>We break them down. We stress test the mechanics, evaluate the materials, and find where the design fails.</p>
-          </div>
-          <div className="method-block reveal reveal-delay-3">
-            <span className="method-number">03.</span>
-            <h3>Refine.</h3>
-            <p>We upgrade the materials, silenced the hinges, and re-assemble a product that feels permanent.</p>
-          </div>
+    <>
+      <section className="page-hero" aria-labelledby="a-title">
+        <div className="container">
+          <p className="eyebrow reveal">About GizMentor</p>
+          <h1 id="a-title" className="display display-md reveal reveal-delay-1">We start with the problem. Then we build what solves it.</h1>
+          <p className="hero-lead reveal reveal-delay-2">
+            {company.legalName} is a UAE-based technology and e-commerce company. We identify real consumer problems and build technology,
+            AI-powered platforms and consumer products to solve them.
+          </p>
         </div>
       </section>
 
-      {/* Closing Mission */}
-      <section className="about-closing reveal">
-        <h2>Every Detail, Mentored to Perfection.</h2>
-        <Link to="/products" className="btn btn-primary">View the Collection</Link>
-      </section>
-    </div>
+      <Section eyebrow="What we do" title="Four areas, one purpose.">
+        <ul className="card-grid card-grid-4">
+          <li className="card reveal"><h3>E-commerce</h3><p>Selling and enabling commerce online.</p></li>
+          <li className="card reveal reveal-delay-1"><h3>Digital products</h3><p>Technology-driven platforms such as Easelect.</p></li>
+          <li className="card reveal reveal-delay-2"><h3>Consumer technology</h3><p>Physical products such as MagFusion.</p></li>
+          <li className="card reveal reveal-delay-3"><h3>Telecom equipment trading</h3><p>Wireless telecommunications equipment.</p></li>
+        </ul>
+      </Section>
+
+      <Section eyebrow="How we work" title="Build. Launch. Scale.">
+        <PillarGrid />
+      </Section>
+
+      <Section eyebrow="Capabilities" title="Everything a product needs to reach the market.">
+        <CapabilityGrid />
+      </Section>
+
+      <Section><FounderCard /></Section>
+
+      <CtaBand
+        title="Work with GizMentor."
+        primary={{ to: '/contact', label: 'Get in touch' }}
+        secondary={{ to: '/ventures', label: 'See our ventures' }}
+      />
+    </>
   );
 }

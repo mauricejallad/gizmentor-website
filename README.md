@@ -1,16 +1,22 @@
-# React + Vite
+# GizMentor website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Corporate and investor site for GizMentor FZCO. Vite + React 19 + react-router, prerendered to static HTML at build time.
 
-Currently, two official plugins are available:
+## Commands
+- `npm run dev` — local dev server
+- `npm run build` — client build → SSR build → `scripts/prerender.mjs` (writes `dist/<route>/index.html`, `404.html`, `sitemap.xml`, `robots.txt`)
+- `npm run lint`
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Where to edit
+| What | File |
+|---|---|
+| Company facts, licence/trademark/TDRA numbers, nav, Easelect status & URL, investor metrics | `src/config/site.js` |
+| Page titles, descriptions, OG images, JSON-LD | `src/config/seo.js` |
+| Pillars, capabilities, founder bio | `src/content/corporate.js` |
+| MagFusion copy & specs (`null` = hidden) | `src/content/magfusion.js` |
+| Design tokens (incl. Easelect palette placeholders) | `src/styles/index.css` → `:root` |
 
-## React Compiler
+Adding a route: add it to `src/routes.jsx` **and** `routeMeta` in `src/config/seo.js` (that is what gets prerendered and listed in the sitemap).
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Redirects
+`/products/magfusion-air` → `/products/magfusion` (301/308) and `/products` → `/products/magfusion` (temporary), in `vercel.json` and `public/_redirects`.
