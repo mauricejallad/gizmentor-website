@@ -7,6 +7,12 @@ import AppScreens from '../components/easelect/AppScreens';
 import JourneySteps from '../components/easelect/JourneySteps';
 import { useLocale } from '../i18n/useLocale';
 import { ventures } from '../config/site';
+import challengeImg from '../assets/easelect/easelect-challenge.webp';
+import electronicsImg from '../assets/easelect/category-electronics.webp';
+import fashionImg from '../assets/easelect/category-fashion.webp';
+import accessoriesImg from '../assets/easelect/category-accessories.webp';
+
+const categoryImages = { electronics: electronicsImg, fashion: fashionImg, accessories: accessoriesImg };
 
 export default function Easelect() {
   const { t } = useLocale();
@@ -34,12 +40,15 @@ export default function Easelect() {
       </section>
 
       {/* The customer's challenge */}
-      <Section layout="split" eyebrow={e.problem.eyebrow} title={e.problem.title}>
-        <ul className="issue-list reveal">
-          {e.problem.items.map((item) => (
-            <li key={item}><span className="issue-icon" aria-hidden="true"><X size={14} strokeWidth={2} /></span>{item}</li>
-          ))}
-        </ul>
+      <Section eyebrow={e.problem.eyebrow} title={e.problem.title}>
+        <div className="split-media">
+          <div className="media-frame media-light reveal"><img src={challengeImg} alt={e.problem.imageAlt} width="1536" height="1024" loading="lazy" /></div>
+          <ul className="issue-list reveal reveal-delay-1">
+            {e.problem.items.map((item) => (
+              <li key={item}><span className="issue-icon" aria-hidden="true"><X size={14} strokeWidth={2} /></span>{item}</li>
+            ))}
+          </ul>
+        </div>
       </Section>
 
       {/* Understanding before recommending */}
@@ -87,7 +96,11 @@ export default function Easelect() {
       <Section tone="muted" eyebrow={e.categories.eyebrow} title={e.categories.title} lead={e.categories.note}>
         <ul className="card-grid card-grid-3">
           {e.categories.items.map((c, i) => (
-            <li key={c.title} className={`card reveal reveal-delay-${i + 1}`}><h3>{c.title}</h3><p>{c.body}</p></li>
+            <li key={c.title} className={`card card-media reveal reveal-delay-${i + 1}`}>
+              <img src={categoryImages[c.key]} alt={c.imageAlt} width="800" height="800" loading="lazy" />
+              <h3>{c.title}</h3>
+              <p>{c.body}</p>
+            </li>
           ))}
         </ul>
         <dl className="markets reveal">

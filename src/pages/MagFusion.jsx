@@ -13,6 +13,8 @@ import lifestyleImg from '../assets/magfusion/magfusion-lifestyle.webp';
 import thinImg from '../assets/magfusion/magfusion-thin.webp';
 import magneticImg from '../assets/magfusion/magfusion-magnetic.webp';
 import wiredImg from '../assets/magfusion/magfusion-wired.webp';
+import deskImg from '../assets/magfusion/magfusion-desk.webp';
+import runningImg from '../assets/magfusion/magfusion-running.webp';
 
 const highlightImages = {
   thin: { src: thinImg, w: 819, h: 1024 },
@@ -84,6 +86,8 @@ export default function MagFusion() {
         <div className="container gallery-grid">
           <div className="media-frame reveal"><img src={lifestyleImg} alt={m.gallery.lifestyle} width="1248" height="832" loading="lazy" /></div>
           <div className="media-frame reveal reveal-delay-1"><img src={inHandImg} alt={m.gallery.inHand} width="1000" height="1001" loading="lazy" /></div>
+          <div className="media-frame reveal"><img src={runningImg} alt={m.gallery.running} width="1170" height="780" loading="lazy" /></div>
+          <div className="media-frame reveal reveal-delay-1"><img src={deskImg} alt={m.gallery.desk} width="1248" height="832" loading="lazy" /></div>
         </div>
       </section>
 

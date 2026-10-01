@@ -54,6 +54,7 @@ const en = {
           { label: 'Mobile app', value: 'Launching soon' },
         ],
         cta: 'Explore Easelect',
+        imageAlt: 'Hands holding a phone showing the Easelect app home screen',
       },
       magfusion: {
         kind: 'Consumer technology',
@@ -63,7 +64,7 @@ const en = {
           { label: 'Availability', value: 'On enquiry' },
         ],
         cta: 'View MagFusion',
-        imageAlt: 'MagFusion Air magnetic power bank attached to the back of a phone',
+        imageAlt: 'MagFusion Air magnetic power bank attached to the back of a phone, with its charge indicator lights on',
       },
     },
     footer: {
@@ -138,6 +139,7 @@ const en = {
       eyebrow: 'About GizMentor',
       title: 'AI, UX and commerce intelligence.',
       lead: 'GizMentor FZCO is a Dubai-based technology and e-commerce company. We help people make better product choices through intelligent research and thoughtful user experience.',
+      imageAlt: 'Everyday gadgets arranged in a precise grid, with one pair of headphones marked by a small red dot',
     },
     story: {
       eyebrow: 'The thinking behind GizMentor',
@@ -245,6 +247,7 @@ const en = {
     problem: {
       eyebrow: 'The customer’s challenge',
       title: 'More choice needs better judgment.',
+      imageAlt: 'A pile of near-identical product boxes, price tags and spec sheets beside a single chosen headphone case',
       items: [
         'Too many products to evaluate',
         'Research scattered across multiple websites',
@@ -298,9 +301,9 @@ const en = {
       title: 'Different products need different decisions.',
       note: 'Category-aware logic and agents are in development.',
       items: [
-        { title: 'Electronics', body: 'Performance, specifications, compatibility, reliability and value.' },
-        { title: 'Fashion', body: 'Size, fit, style, material, personal preferences and availability.' },
-        { title: 'Accessories', body: 'Compatibility, intended use and the products they need to work with.' },
+        { key: 'electronics', title: 'Electronics', body: 'Performance, specifications, compatibility, reliability and value.', imageAlt: 'A laptop, smartphone, wireless earbuds, a USB-C cable and a smartwatch laid out on a light surface' },
+        { key: 'fashion', title: 'Fashion', body: 'Size, fit, style, material, personal preferences and availability.', imageAlt: 'A folded knit sweater, white sneakers, a leather belt and sunglasses laid out on a light surface' },
+        { key: 'accessories', title: 'Accessories', body: 'Compatibility, intended use and the products they need to work with.', imageAlt: 'A phone case, a magnetic power bank, a watch strap, a charger and a cable pouch laid out on a light surface' },
       ],
       marketLabel: 'Initial priority market',
       market: 'United States',
@@ -352,6 +355,8 @@ const en = {
     galleryAria: 'MagFusion Air in use',
     gallery: {
       lifestyle: 'MagFusion Air on a table in an airport lounge',
+      desk: 'MagFusion Air attached to a phone on a desk beside a laptop',
+      running: 'A runner holding a phone with MagFusion Air attached',
       inHand: 'Person on a call with MagFusion Air attached to their phone',
     },
     specs: {
@@ -400,6 +405,7 @@ const en = {
       title: 'A UAE technology company building a portfolio of scalable ventures.',
       lead: 'An overview of who we are, what we have built, what we are building now, and why it can scale.',
       tocAria: 'On this page',
+      imageAlt: 'Modern building facade with vertical aluminium fins catching low evening light',
     },
     toc: {
       overview: 'Company overview',

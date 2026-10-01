@@ -4,6 +4,7 @@ import CtaBand from '../components/ui/CtaBand';
 import NameEquation from '../components/home/NameEquation';
 import { useLocale } from '../i18n/useLocale';
 import { company } from '../config/site';
+import gadgetsImg from '../assets/images/about-gadgets.webp';
 
 export default function About() {
   const { t } = useLocale();
@@ -11,7 +12,11 @@ export default function About() {
   const { address } = t.common;
   return (
     <>
-      <PageHero id="about-title" eyebrow={a.hero.eyebrow} title={a.hero.title} lead={a.hero.lead} />
+      <PageHero id="about-title" eyebrow={a.hero.eyebrow} title={a.hero.title} lead={a.hero.lead}>
+        <div className="banner media-frame media-light reveal reveal-delay-3">
+          <img src={gadgetsImg} alt={a.hero.imageAlt} width="1536" height="1024" fetchPriority="high" />
+        </div>
+      </PageHero>
 
       <Section layout="split" eyebrow={a.story.eyebrow} title={a.story.title}>
         {a.story.body.map((p) => <p key={p.slice(0, 24)} className="section-lead reveal">{p}</p>)}

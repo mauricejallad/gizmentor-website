@@ -319,11 +319,12 @@ strong, b { font-weight: 500; }
 .venture-cue { width: 8px; height: 8px; border-radius: 50%; background: var(--cue, var(--text-3)); }
 .venture-name { font-size: 1.75rem; font-weight: 500; letter-spacing: -0.02em; unicode-bidi: isolate; }
 .venture-desc { font-size: 1rem; color: var(--text-3); font-weight: 300; }
-.venture-split { display: grid; grid-template-columns: minmax(0, 1fr) 180px; flex-grow: 1; }
-.venture-media { background: var(--media-bg); overflow: hidden; }
+.venture-media { aspect-ratio: 16 / 10; overflow: hidden; background: var(--surface-2); border-bottom: 1px solid var(--line); }
 .venture-media img { width: 100%; height: 100%; object-fit: cover; }
-[data-venture='easelect'] .venture-media { background: #0b111a; }
-[data-venture='easelect'] .venture-media img { object-position: top; }
+[data-venture='easelect'] .venture-media img { object-position: center 30%; }
+[data-venture='magfusion'] .venture-media { background: #ffffff; }
+[data-venture='magfusion'] .venture-media img { object-fit: contain; padding: 4%; }
+.venture-body { flex-grow: 1; }
 .venture-facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid var(--line); margin-top: auto; }
 .venture-facts > div { padding: 18px clamp(24px, 3vw, 36px); }
 .venture-facts > div + div { border-inline-start: 1px solid var(--line); }
@@ -419,6 +420,12 @@ strong, b { font-weight: 500; }
 
 .media-frame { border-radius: 16px; overflow: hidden; background: var(--media-bg); border: 1px solid var(--line); }
 .media-frame img { width: 100%; height: 100%; object-fit: cover; }
+.media-light { background: var(--surface-2); }
+.banner { margin-top: 48px; aspect-ratio: 21 / 9; }
+.card-media { padding: 0; overflow: hidden; gap: 8px; }
+.card-media img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-bottom: 1px solid var(--line); margin-bottom: 12px; }
+.card-media h3, .card-media p { padding-inline: clamp(20px, 2.4vw, 28px); }
+.card-media p { padding-bottom: clamp(20px, 2.4vw, 28px); }
 
 /* Name equation: Gizmo + Mentor = GizMentor */
 .name-equation { padding: clamp(24px, 3vw, 32px); border: 1px solid var(--line); border-radius: 16px; background: var(--surface); }
@@ -492,6 +499,9 @@ strong, b { font-weight: 500; }
 .highlight .media-frame { aspect-ratio: 4 / 3; }
 .highlight-copy .section-lead { margin-top: 16px; }
 .gallery-grid { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: 20px; }
+.gallery-grid .media-frame:nth-child(3) { grid-column: 1 / 2; }
+.gallery-grid .media-frame { aspect-ratio: 3 / 2; }
+.gallery-grid .media-frame:nth-child(even) { aspect-ratio: auto; }
 .gallery-grid .media-frame { aspect-ratio: auto; }
 
 .journey { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
@@ -592,7 +602,6 @@ select.form-control { appearance: auto; }
 @media (max-width: 640px) {
   .header-cta { display: none; }
   .toc ol, .journey, .timeline, .card-grid-4, .form-row, .footer-cols, .engine { grid-template-columns: minmax(0, 1fr); }
-  .venture-split { grid-template-columns: minmax(0, 1fr) 112px; }
   .facts > div, .point-list li { grid-template-columns: minmax(0, 1fr); gap: 4px; }
   .link-row { grid-template-columns: 44px minmax(0, 1fr); }
   .link-row-arrow { display: none; }

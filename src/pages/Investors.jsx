@@ -8,6 +8,7 @@ import { StatusList } from '../components/ui/StatusBadge';
 import { useLocale } from '../i18n/useLocale';
 import { company, ventures, investorMetrics } from '../config/site';
 import magfusionImg from '../assets/magfusion/magfusion-hero.webp';
+import facadeImg from '../assets/images/investors-facade.webp';
 
 const sections = ['overview', 'vision', 'problem', 'strategy', 'easelect', 'capability', 'execution', 'foundation', 'growth', 'contact'];
 const num = (id) => String(sections.indexOf(id) + 1).padStart(2, '0');
@@ -20,6 +21,9 @@ export default function Investors() {
   return (
     <>
       <PageHero id="inv-title" eyebrow={v.hero.eyebrow} title={v.hero.title} lead={v.hero.lead}>
+        <div className="banner media-frame reveal reveal-delay-3">
+          <img src={facadeImg} alt={v.hero.imageAlt} width="1536" height="1024" fetchPriority="high" />
+        </div>
         <nav className="toc reveal reveal-delay-3" aria-label={v.hero.tocAria}>
           <ol>
             {sections.map((id) => (
