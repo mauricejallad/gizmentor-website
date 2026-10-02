@@ -1,32 +1,57 @@
-import Button from '../components/ui/Button';
+import { Link } from 'react-router-dom';
 import Section from '../components/ui/Section';
-import PillarGrid from '../components/ui/PillarGrid';
-import CapabilityGrid from '../components/ui/CapabilityGrid';
 import VentureCards from '../components/ui/VentureCards';
 import LinkRows from '../components/ui/LinkRows';
 import CtaBand from '../components/ui/CtaBand';
+import BigNumbers from '../components/ui/BigNumbers';
+import CircleIcon from '../components/ui/CircleIcon';
+import BrandMark from '../components/brand/BrandMark';
+import CountUp from '../components/motion/CountUp';
 import ModelDiagram from '../components/home/ModelDiagram';
-import NameEquation from '../components/home/NameEquation';
+import RisingBanners from '../components/home/RisingBanners';
+import PrincipleSlider from '../components/home/PrincipleSlider';
+import ApproachTabs from '../components/home/ApproachTabs';
 import { useLocale } from '../i18n/useLocale';
+import heroImg from '../assets/images/investors-facade.webp';
+import gadgetsImg from '../assets/images/about-gadgets.webp';
 
 export default function Home() {
-  const { t } = useLocale();
+  const { t, to } = useLocale();
   const h = t.home;
   return (
     <>
-      {/* 1 — Hero: statement, then the operating-model diagram */}
-      <section className="hero" aria-labelledby="hero-title">
+      {/* 1 — Hero: full-height slate, photo, the red mark, and the two ventures as rising tiles */}
+      <section className="home-hero" aria-labelledby="hero-title">
+        <div className="home-hero-bg" aria-hidden="true">
+          <img src={heroImg} alt="" width="1536" height="1024" fetchPriority="high" />
+        </div>
+        <div className="home-hero-mark-wrap" aria-hidden="true"><BrandMark className="home-hero-mark" /></div>
+        <div className="container home-hero-inner">
+          <div className="home-hero-copy">
+            <p className="section-label hero-label">{h.hero.badge}</p>
+            <h1 id="hero-title" className="hero-display">{h.hero.title}</h1>
+            <p className="hero-lead">{h.hero.lead}</p>
+          </div>
+          <RisingBanners />
+        </div>
+        <a href="#overview" className="hero-next" aria-label={t.common.scrollDown}>
+          <CircleIcon icon="down" className="circle-icon-lg" />
+        </a>
+      </section>
+
+      {/* 2 — How GizMentor works: a headline figure, then the operating-model diagram */}
+      <section className="section section-dark overview" id="overview" aria-labelledby="overview-title">
         <div className="container">
-          <div className="hero-grid">
-            <div>
-              <p className="badge reveal"><span className="badge-dot" aria-hidden="true" />{h.hero.badge}</p>
-              <h1 id="hero-title" className="display reveal reveal-delay-1">{h.hero.title}</h1>
+          <p className="section-label reveal">{h.diagram.label}</p>
+          <div className="overview-grid">
+            <div className="overview-figure reveal">
+              <p className="overview-value"><CountUp value={h.overview.value} /></p>
+              <p className="overview-caption">{h.overview.label}</p>
             </div>
-            <div>
-              <p className="hero-lead reveal reveal-delay-2">{h.hero.lead}</p>
-              <div className="btn-row reveal reveal-delay-3">
-                <Button to="/contact?type=partnership">{h.hero.primary}</Button>
-                <Button to="#model" variant="secondary" icon={false}>{h.hero.secondary}</Button>
+            <div className="reveal reveal-delay-1">
+              <h2 id="overview-title" className="overview-text">{h.overview.body}</h2>
+              <div className="btn-row">
+                <Link to={to('/contact?type=partnership')} className="btn btn-primary"><CircleIcon /><span>{h.hero.primary}</span></Link>
               </div>
             </div>
           </div>
@@ -34,33 +59,56 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 2 — Who we are: philosophy and the name */}
-      <Section layout="split" eyebrow={h.philosophy.eyebrow} title={h.philosophy.title} lead={h.philosophy.body}>
-        <NameEquation />
-        <div className="btn-row"><Button to="/about" variant="secondary">{h.philosophy.more}</Button></div>
+      {/* 3 — Philosophy: photo half with the name, red half with the statement */}
+      <section className="split-panel" aria-labelledby="philosophy-title">
+        <div className="split-panel-media">
+          <img src={gadgetsImg} alt={t.about.hero.imageAlt} width="1536" height="1024" loading="lazy" />
+          <div className="split-panel-name reveal" dir="ltr" lang="en">
+            <span className="split-panel-name-eq">{h.name.gizmo} + {h.name.mentor}</span>
+            <span className="split-panel-name-word">GizMentor</span>
+          </div>
+        </div>
+        <div className="split-panel-copy section-accent">
+          <p className="section-label reveal">{h.philosophy.eyebrow}</p>
+          <div className="split-panel-quote reveal reveal-delay-1">
+            <span className="quote-mark" aria-hidden="true">“</span>
+            <div>
+              <h2 id="philosophy-title" className="split-panel-title">{h.philosophy.title}</h2>
+              <p>{h.philosophy.body}</p>
+              <p className="split-panel-caption">{h.name.caption}</p>
+              <Link to={to('/about')} className="text-link"><CircleIcon /><span>{h.philosophy.more}</span></Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4 — Easelect in numbers */}
+      <Section eyebrow={h.numbers.eyebrow} className="numbers-section">
+        <BigNumbers main={h.numbers.main} items={h.numbers.items} />
+        <div className="btn-row numbers-cta reveal">
+          <Link to={to('/easelect')} className="btn btn-secondary"><CircleIcon /><span>{t.common.ventureCards.easelect.cta}</span></Link>
+        </div>
       </Section>
 
-      {/* 3 — Ventures */}
-      <Section eyebrow={h.ventures.eyebrow} title={h.ventures.title}>
+      {/* 5 — Ventures */}
+      <Section tone="muted" eyebrow={h.ventures.eyebrow} title={h.ventures.title}>
         <VentureCards />
       </Section>
 
-      {/* 4 — Partnerships: the primary audience */}
-      <Section tone="muted" layout="split" eyebrow={h.partners.eyebrow} title={h.partners.title} lead={h.partners.lead}>
+      {/* 6 — Recommendation principles */}
+      <PrincipleSlider />
+
+      {/* 7 — Approach: how we work, and the capabilities behind it */}
+      <Section eyebrow={h.approach.eyebrow} title={h.model.title} lead={h.capabilities.lead}>
+        <ApproachTabs />
+      </Section>
+
+      {/* 8 — Partnerships */}
+      <Section tone="muted" eyebrow={h.partners.eyebrow} title={h.partners.title} lead={h.partners.lead}>
         <LinkRows rows={h.partners.rows} />
       </Section>
 
-      {/* 5 — Operating model */}
-      <Section id="model" eyebrow={h.model.eyebrow} title={h.model.title} lead={h.model.lead}>
-        <PillarGrid />
-      </Section>
-
-      {/* 6 — Capabilities */}
-      <Section eyebrow={h.capabilities.eyebrow} title={h.capabilities.title} lead={h.capabilities.lead}>
-        <CapabilityGrid />
-      </Section>
-
-      {/* 7 — Close */}
+      {/* 9 — Close */}
       <CtaBand
         title={h.cta.title}
         body={h.cta.body}

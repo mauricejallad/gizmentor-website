@@ -10,13 +10,13 @@ export default function Ventures() {
   const v = t.ventures;
   return (
     <>
-      <PageHero id="ventures-title" eyebrow={v.hero.eyebrow} title={v.hero.title} lead={v.hero.lead} />
+      <PageHero id="ventures-title" word={t.common.nav.ventures} eyebrow={v.hero.eyebrow} title={v.hero.title} lead={v.hero.lead} next="portfolio" />
 
-      <Section eyebrow={v.portfolio.eyebrow} title={v.portfolio.title}>
+      <Section id="portfolio" eyebrow={v.portfolio.eyebrow} title={v.portfolio.title}>
         <VentureCards />
       </Section>
 
-      <Section tone="muted" eyebrow={v.criteria.eyebrow} title={v.criteria.title}>
+      <Section tone="dark" eyebrow={v.criteria.eyebrow} title={v.criteria.title}>
         <ul className="card-grid card-grid-3">
           {v.criteria.items.map((c, i) => (
             <li key={c.title} className={`card reveal reveal-delay-${i + 1}`}><h3>{c.title}</h3><p>{c.body}</p></li>

@@ -3,7 +3,7 @@ import Button from '../components/ui/Button';
 import Section from '../components/ui/Section';
 import CtaBand from '../components/ui/CtaBand';
 import StatusBadge, { StatusList } from '../components/ui/StatusBadge';
-import AppScreens from '../components/easelect/AppScreens';
+import PageHero from '../components/ui/PageHero';
 import JourneySteps from '../components/easelect/JourneySteps';
 import { useLocale } from '../i18n/useLocale';
 import { ventures } from '../config/site';
@@ -25,26 +25,26 @@ export default function Easelect() {
   const [web, mobile] = venture.status;
   return (
     <div data-venture="easelect">
-      <section className="hero hero-split" aria-labelledby="es-title">
-        <div className="container hero-media-grid">
-          <div>
-            <p className="badge reveal"><span className="badge-dot" aria-hidden="true" />{e.hero.eyebrow}</p>
-            <h1 id="es-title" className="display reveal reveal-delay-1">
-              <span className="latin">{e.hero.title}</span> <span className="text-muted">{e.hero.tagline}</span>
-            </h1>
-            <p className="hero-lead reveal reveal-delay-2">{e.hero.lead}</p>
-            <StatusList items={venture.status} />
-            <div className="btn-row reveal reveal-delay-3">
-              <Button href={venture.url}>{e.hero.primary}</Button>
-              <Button to="/contact?type=easelect" variant="secondary">{e.hero.secondary}</Button>
-            </div>
-          </div>
-          <div className="reveal reveal-delay-2"><AppScreens /></div>
-        </div>
-      </section>
+      <PageHero
+        id="es-title"
+        word="Easelect"
+        eyebrow={e.hero.eyebrow}
+        title={<><span className="sr-only">{e.hero.title} </span>{e.hero.tagline}</>}
+        lead={e.hero.lead}
+        next="challenge"
+        actions={
+          <>
+            <Button href={venture.url}>{e.hero.primary}</Button>
+            <Button to="/contact?type=easelect" variant="secondary">{e.hero.secondary}</Button>
+          </>
+        }
+        media={<div className="banner"><ThemedImage light={webLight} dark={webDark} alt={e.platform.web.imageAlt} width="1400" height="809" eager /></div>}
+      >
+        <StatusList items={venture.status} />
+      </PageHero>
 
       {/* The customer's challenge */}
-      <Section eyebrow={e.problem.eyebrow} title={e.problem.title}>
+      <Section id="challenge" eyebrow={e.problem.eyebrow} title={e.problem.title}>
         <div className="split-media">
           <div className="media-frame media-light reveal"><img src={challengeImg} alt={e.problem.imageAlt} width="1536" height="1024" loading="lazy" /></div>
           <ul className="issue-list reveal reveal-delay-1">
@@ -56,18 +56,18 @@ export default function Easelect() {
       </Section>
 
       {/* Understanding before recommending */}
-      <Section tone="muted" eyebrow={e.solution.eyebrow} width="narrow">
+      <Section tone="accent" eyebrow={e.solution.eyebrow}>
         <p className="statement reveal">{e.solution.statement}<span className="text-muted">{e.solution.muted}</span></p>
       </Section>
 
       {/* The six-step journey, with real app screens */}
-      <Section eyebrow={e.journey.eyebrow} title={e.journey.title}>
+      <Section tone="muted" eyebrow={e.journey.eyebrow} title={e.journey.title}>
         <JourneySteps />
         <p className="fine journey-note reveal">{e.journey.continuity}</p>
       </Section>
 
       {/* Intelligence engine */}
-      <Section tone="muted" eyebrow={e.engine.eyebrow} title={e.engine.title} lead={e.engine.lead}>
+      <Section tone="dark" eyebrow={e.engine.eyebrow} title={e.engine.title} lead={e.engine.lead}>
         <ol className="engine">
           {e.engine.steps.map((s, i) => (
             <li key={s.title} className={`engine-step reveal reveal-delay-${(i % 3) + 1}`}>

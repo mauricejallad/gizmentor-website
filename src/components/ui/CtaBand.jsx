@@ -1,6 +1,7 @@
 import Button from './Button';
+import BrandMark from '../brand/BrandMark';
 
-/** Closing call to action: an inverted panel (dark on light theme, light on dark theme). */
+/** Closing call to action: a full-bleed slate band with a giant title and round-arrow buttons. */
 export default function CtaBand({ title, body, primary, secondary, id }) {
   const render = (cta, fallbackVariant) => {
     if (!cta) return null;
@@ -9,12 +10,11 @@ export default function CtaBand({ title, body, primary, secondary, id }) {
   };
   return (
     <section className="cta-band" aria-label={title} id={id}>
-      <div className="container">
-        <div className="cta-card reveal">
-          <div>
-            <h2 className="cta-title">{title}</h2>
-            {body && <p className="cta-body">{body}</p>}
-          </div>
+      <BrandMark variant="outline" className="cta-mark" />
+      <div className="container cta-inner">
+        <h2 className="cta-title reveal">{title}</h2>
+        <div className="cta-side reveal reveal-delay-1">
+          {body && <p className="cta-body">{body}</p>}
           <div className="btn-row">
             {render(primary, 'primary')}
             {render(secondary, 'secondary')}

@@ -9,6 +9,7 @@ export default function NotFound() {
     <PageHero
       id="nf-title"
       className="not-found"
+      word="404"
       eyebrow={n.eyebrow}
       title={n.title}
       lead={n.lead}

@@ -20,11 +20,15 @@ export default function Investors() {
   const eyebrow = (id) => `${num(id)} · ${v.toc[id]}`;
   return (
     <>
-      <PageHero id="inv-title" eyebrow={v.hero.eyebrow} title={v.hero.title} lead={v.hero.lead}>
-        <div className="banner media-frame reveal reveal-delay-3">
-          <img src={facadeImg} alt={v.hero.imageAlt} width="1536" height="1024" fetchPriority="high" />
-        </div>
-        <nav className="toc reveal reveal-delay-3" aria-label={v.hero.tocAria}>
+      <PageHero
+        id="inv-title"
+        word={t.common.nav.investors}
+        eyebrow={v.hero.eyebrow}
+        title={v.hero.title}
+        lead={v.hero.lead}
+        media={<div className="banner"><img src={facadeImg} alt={v.hero.imageAlt} width="1536" height="1024" fetchPriority="high" /></div>}
+      >
+        <nav className="toc" aria-label={v.hero.tocAria}>
           <ol>
             {sections.map((id) => (
               <li key={id}><a href={`#${id}`}><span>{num(id)}</span>{v.toc[id]}</a></li>
@@ -42,16 +46,16 @@ export default function Investors() {
         </dl>
       </Section>
 
-      <Section id="vision" tone="muted" eyebrow={eyebrow('vision')} width="narrow">
+      <Section id="vision" tone="accent" eyebrow={eyebrow('vision')}>
         <p className="statement reveal">{v.vision.statement}<span className="text-muted">{v.vision.muted}</span></p>
       </Section>
 
-      <Section id="problem" layout="split" eyebrow={eyebrow('problem')} title={v.problem.title}>
+      <Section id="problem" tone="muted" layout="split" eyebrow={eyebrow('problem')} title={v.problem.title}>
         <p className="section-lead reveal">{v.problem.p1}</p>
         <p className="section-lead reveal reveal-delay-1">{v.problem.p2}</p>
       </Section>
 
-      <Section id="strategy" tone="muted" eyebrow={eyebrow('strategy')} title={v.strategy.title} lead={v.strategy.lead}>
+      <Section id="strategy" tone="dark" eyebrow={eyebrow('strategy')} title={v.strategy.title} lead={v.strategy.lead}>
         <ol className="timeline timeline-labelled">
           {t.about.evolution.items.map((s, i) => (
             <li key={s.title} className={`timeline-item reveal reveal-delay-${(i % 3) + 1}`}>
@@ -97,7 +101,7 @@ export default function Investors() {
         </div>
       </Section>
 
-      <Section id="foundation" tone="muted" eyebrow={eyebrow('foundation')} title={v.foundation.title}>
+      <Section id="foundation" tone="dark" eyebrow={eyebrow('foundation')} title={v.foundation.title}>
         <ul className="card-grid card-grid-3">
           <li className="card reveal">
             <h3>{v.foundation.licence.title}</h3>

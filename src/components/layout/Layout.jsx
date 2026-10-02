@@ -3,6 +3,7 @@ import Header from './Header';
 import Footer from './Footer';
 import SeoSync from '../SeoSync';
 import ScrollToTop from '../ScrollToTop';
+import IntroCurtain from '../motion/IntroCurtain';
 import useScrollReveal from '../../hooks/useScrollReveal';
 import { LocaleProvider } from '../../i18n/LocaleContext';
 import { LOCALES } from '../../i18n/locales';
@@ -15,7 +16,8 @@ export default function Layout({ locale }) {
   const navigated = key !== 'default';
   return (
     <LocaleProvider locale={locale}>
-      <div className="site" lang={locale} dir={LOCALES[locale].dir}>
+      <div className="site" id="top" lang={locale} dir={LOCALES[locale].dir}>
+        <IntroCurtain />
         <a href="#main" className="skip-link">{LOCALES[locale].content.common.skipToContent}</a>
         <ScrollToTop />
         <SeoSync />

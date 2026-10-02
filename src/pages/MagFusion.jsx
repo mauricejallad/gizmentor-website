@@ -1,7 +1,6 @@
-import { Link } from 'react-router-dom';
-import { ChevronRight } from 'lucide-react';
 import Button from '../components/ui/Button';
 import Section from '../components/ui/Section';
+import PageHero from '../components/ui/PageHero';
 import PillarGrid from '../components/ui/PillarGrid';
 import CtaBand from '../components/ui/CtaBand';
 import { StatusList } from '../components/ui/StatusBadge';
@@ -23,42 +22,31 @@ const highlightImages = {
 };
 
 export default function MagFusion() {
-  const { t, to } = useLocale();
+  const { t } = useLocale();
   const m = t.magfusion;
   const venture = ventures.magfusion;
   const specs = m.specs.items.filter((s) => s.value);
   return (
     <div data-venture="magfusion">
-      <div className="container">
-        <nav className="breadcrumb" aria-label={m.breadcrumbAria}>
-          <ol>
-            <li><Link to={to('/')}>{t.common.nav.home}</Link><ChevronRight size={14} aria-hidden="true" className="flip-rtl" /></li>
-            <li><Link to={to('/ventures')}>{m.breadcrumbPortfolio}</Link><ChevronRight size={14} aria-hidden="true" className="flip-rtl" /></li>
-            <li aria-current="page">{venture.family}</li>
-          </ol>
-        </nav>
-      </div>
+      <PageHero
+        id="mf-title"
+        word={venture.family}
+        eyebrow={m.hero.eyebrow}
+        title={<><span className="latin">{venture.name}</span>. {m.hero.tagline}</>}
+        lead={m.hero.summary}
+        next="story"
+        actions={
+          <>
+            <Button to="/contact?type=magfusion&product=magfusion-air">{m.hero.primary}</Button>
+            <Button to="/contact?type=retail" variant="secondary">{m.hero.secondary}</Button>
+          </>
+        }
+        media={<div className="banner"><img src={heroImg} alt={m.hero.imageAlt} width="1024" height="576" fetchPriority="high" /></div>}
+      >
+        <StatusList items={venture.status} />
+      </PageHero>
 
-      <section className="hero hero-split product-hero" aria-labelledby="mf-title">
-        <div className="container hero-media-grid">
-          <div>
-            <p className="badge reveal"><span className="badge-dot" aria-hidden="true" />{m.hero.eyebrow}</p>
-            <h1 id="mf-title" className="display reveal reveal-delay-1"><span className="latin">{venture.name}</span></h1>
-            <p className="product-tagline reveal reveal-delay-1">{m.hero.tagline}</p>
-            <p className="hero-lead reveal reveal-delay-2">{m.hero.summary}</p>
-            <StatusList items={venture.status} />
-            <div className="btn-row reveal reveal-delay-3">
-              <Button to="/contact?type=magfusion&product=magfusion-air">{m.hero.primary}</Button>
-              <Button to="/contact?type=retail" variant="secondary">{m.hero.secondary}</Button>
-            </div>
-          </div>
-          <div className="media-frame reveal reveal-delay-2">
-            <img src={heroImg} alt={m.hero.imageAlt} width="1024" height="576" fetchPriority="high" />
-          </div>
-        </div>
-      </section>
-
-      <Section tone="muted" eyebrow={m.story.eyebrow} width="narrow">
+      <Section id="story" eyebrow={m.story.eyebrow}>
         <p className="statement reveal">{m.story.text}</p>
       </Section>
 
@@ -91,17 +79,17 @@ export default function MagFusion() {
         </div>
       </section>
 
-      <Section layout="split" eyebrow={m.specs.eyebrow} title={m.specs.title} id="specs">
+      <Section tone="muted" layout="split" eyebrow={m.specs.eyebrow} title={m.specs.title} id="specs">
         <dl className="facts reveal">
           {specs.map((s) => <div key={s.label}><dt>{s.label}</dt><dd>{s.value}</dd></div>)}
         </dl>
       </Section>
 
-      <Section tone="muted" eyebrow={m.method.eyebrow} title={m.method.title}>
+      <Section tone="dark" eyebrow={m.method.eyebrow} title={m.method.title}>
         <PillarGrid items={m.method.items} />
       </Section>
 
-      <Section layout="split" eyebrow={m.compliance.eyebrow} title={m.compliance.title}>
+      <Section tone="accent" layout="split" eyebrow={m.compliance.eyebrow} title={m.compliance.title}>
         <p className="section-lead reveal">{t.common.tdra}</p>
         {venture.tdraRegistrationNumber && <p className="fine">{m.compliance.regNo} <span className="latin">{venture.tdraRegistrationNumber}</span></p>}
         <p className="disclaimer reveal">{m.compliance.disclaimer}</p>

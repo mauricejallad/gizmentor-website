@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { Mail, MapPin } from 'lucide-react';
 import { useLocale } from '../i18n/useLocale';
 import { company, inquiryTypes } from '../config/site';
+import PageHero from '../components/ui/PageHero';
 
 const validTypes = new Set(inquiryTypes);
 const empty = { name: '', email: '', organisation: '', message: '' };
@@ -40,13 +41,11 @@ export default function Contact() {
   };
 
   return (
-    <section className="page-hero page-contact" aria-labelledby="contact-title">
-      <div className="container contact-grid">
-        <div>
-          <p className="badge"><span className="badge-dot" aria-hidden="true" />{c.eyebrow}</p>
-          <h1 id="contact-title" className="display">{c.title}</h1>
-          <p className="hero-lead">{c.lead}</p>
-          <ul className="contact-details">
+    <>
+      <PageHero id="contact-title" word={t.common.contact} eyebrow={c.eyebrow} title={c.title} lead={c.lead} next="enquiry" />
+      <section className="section" id="enquiry" aria-label={c.fields.type}>
+        <div className="container contact-grid">
+          <ul className="contact-details reveal">
             <li>
               <span className="icon-tile" aria-hidden="true"><Mail size={18} strokeWidth={1.6} /></span>
               <span><span className="contact-label">{c.emailLabel}</span><a href={`mailto:${company.email}`} className="latin">{company.email}</a></span>
@@ -61,37 +60,37 @@ export default function Contact() {
               </span>
             </li>
           </ul>
-        </div>
 
-        <form onSubmit={onSubmit} className="contact-form">
-          <div className="form-row">
-            <div className="form-group">
-              <label htmlFor="name">{c.fields.name}</label>
-              <input id="name" name="name" autoComplete="name" value={form.name} onChange={onChange} required className="form-control" />
+          <form onSubmit={onSubmit} className="contact-form reveal reveal-delay-1">
+            <div className="form-row">
+              <div className="form-group">
+                <label htmlFor="name">{c.fields.name}</label>
+                <input id="name" name="name" autoComplete="name" value={form.name} onChange={onChange} required className="form-control" />
+              </div>
+              <div className="form-group">
+                <label htmlFor="email">{c.fields.email}</label>
+                <input id="email" type="email" name="email" dir="ltr" autoComplete="email" value={form.email} onChange={onChange} required className="form-control" />
+              </div>
             </div>
             <div className="form-group">
-              <label htmlFor="email">{c.fields.email}</label>
-              <input id="email" type="email" name="email" dir="ltr" autoComplete="email" value={form.email} onChange={onChange} required className="form-control" />
+              <label htmlFor="organisation">{c.fields.organisation} <span className="optional">{c.fields.optional}</span></label>
+              <input id="organisation" name="organisation" autoComplete="organization" value={form.organisation} onChange={onChange} className="form-control" />
             </div>
-          </div>
-          <div className="form-group">
-            <label htmlFor="organisation">{c.fields.organisation} <span className="optional">{c.fields.optional}</span></label>
-            <input id="organisation" name="organisation" autoComplete="organization" value={form.organisation} onChange={onChange} className="form-control" />
-          </div>
-          <div className="form-group">
-            <label htmlFor="inquiryType">{c.fields.type}</label>
-            <select id="inquiryType" name="inquiryType" value={inquiryType} onChange={onChange} className="form-control">
-              {inquiryTypes.map((v) => <option key={v} value={v}>{c.types[v]}</option>)}
-            </select>
-          </div>
-          <div className="form-group">
-            <label htmlFor="message">{c.fields.message}</label>
-            <textarea id="message" name="message" rows="6" value={form.message} onChange={onChange} required className="form-control" />
-          </div>
-          <button type="submit" className="btn btn-primary btn-block">{c.submit}</button>
-          <p className="form-note" role="status">{sent ? c.noteAfter(company.email) : c.noteBefore}</p>
-        </form>
-      </div>
-    </section>
+            <div className="form-group">
+              <label htmlFor="inquiryType">{c.fields.type}</label>
+              <select id="inquiryType" name="inquiryType" value={inquiryType} onChange={onChange} className="form-control">
+                {inquiryTypes.map((v) => <option key={v} value={v}>{c.types[v]}</option>)}
+              </select>
+            </div>
+            <div className="form-group">
+              <label htmlFor="message">{c.fields.message}</label>
+              <textarea id="message" name="message" rows="6" value={form.message} onChange={onChange} required className="form-control" />
+            </div>
+            <button type="submit" className="btn btn-primary btn-block">{c.submit}</button>
+            <p className="form-note" role="status">{sent ? c.noteAfter(company.email) : c.noteBefore}</p>
+          </form>
+        </div>
+      </section>
+    </>
   );
 }

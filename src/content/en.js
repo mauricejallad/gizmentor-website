@@ -18,6 +18,10 @@ const en = {
     language: { label: 'العربية', lang: 'ar', aria: 'View this page in Arabic' },
     theme: { toDark: 'Switch to dark theme', toLight: 'Switch to light theme' },
     opensNewTab: '(opens in a new tab)',
+    toTop: 'Back to top',
+    scrollDown: 'Scroll to the next section',
+    next: 'Next',
+    previous: 'Previous',
     statusAria: 'Status',
     status: { webLive: 'Web platform live', mobileSoon: 'Mobile app launching soon', onEnquiry: 'Available on enquiry' },
     address: {
@@ -81,6 +85,21 @@ const en = {
   },
 
   home: {
+    overview: {
+      value: '02',
+      label: 'Ventures in market',
+      body: 'Shared capabilities in strategy, design, AI and commerce feed one operating model. Every venture it produces goes to market to the same standard.',
+    },
+    numbers: {
+      eyebrow: 'Easelect at a glance',
+      main: { value: '08', label: 'Steps in the Easelect intelligence engine, from intent to recommendation' },
+      items: [
+        { value: '06', label: 'Stages in the shopping journey, from the need to the retailer' },
+        { value: '03', label: 'Category-aware product areas in development' },
+      ],
+    },
+    principles: { note: 'The principles behind every Easelect recommendation.' },
+    approach: { eyebrow: 'Our approach', tabs: { model: 'How we work', capabilities: 'Capabilities' } },
     hero: {
       badge: 'GizMentor FZCO · Dubai, UAE',
       title: 'The company behind smarter everyday decisions.',

@@ -12,18 +12,22 @@ export default function About() {
   const { address } = t.common;
   return (
     <>
-      <PageHero id="about-title" eyebrow={a.hero.eyebrow} title={a.hero.title} lead={a.hero.lead}>
-        <div className="banner media-frame media-light reveal reveal-delay-3">
-          <img src={gadgetsImg} alt={a.hero.imageAlt} width="1536" height="1024" fetchPriority="high" />
-        </div>
-      </PageHero>
+      <PageHero
+        id="about-title"
+        word="GizMentor"
+        eyebrow={a.hero.eyebrow}
+        title={a.hero.title}
+        lead={a.hero.lead}
+        next="story"
+        media={<div className="banner"><img src={gadgetsImg} alt={a.hero.imageAlt} width="1536" height="1024" fetchPriority="high" /></div>}
+      />
 
-      <Section layout="split" eyebrow={a.story.eyebrow} title={a.story.title}>
+      <Section id="story" layout="split" eyebrow={a.story.eyebrow} title={a.story.title}>
         {a.story.body.map((p) => <p key={p.slice(0, 24)} className="section-lead reveal">{p}</p>)}
         <NameEquation />
       </Section>
 
-      <Section tone="muted" eyebrow={a.vision.eyebrow} title={a.vision.title}>
+      <Section tone="accent" eyebrow={a.vision.eyebrow} title={a.vision.title}>
         <div className="card-grid card-grid-2">
           {a.vision.items.map((v, i) => (
             <article key={v.label} className={`card card-statement reveal reveal-delay-${i + 1}`}>
@@ -46,13 +50,13 @@ export default function About() {
         </ol>
       </Section>
 
-      <Section tone="muted" layout="split" eyebrow={a.principles.eyebrow} title={a.principles.title}>
+      <Section tone="dark" layout="split" eyebrow={a.principles.eyebrow} title={a.principles.title}>
         <dl className="facts facts-principles reveal">
           {a.principles.items.map((p) => <div key={p.title}><dt>{p.title}</dt><dd>{p.body}</dd></div>)}
         </dl>
       </Section>
 
-      <Section eyebrow={a.whatWeDo.eyebrow} title={a.whatWeDo.title}>
+      <Section tone="muted" eyebrow={a.whatWeDo.eyebrow} title={a.whatWeDo.title}>
         <ul className="card-grid card-grid-4">
           {a.whatWeDo.items.map((item, i) => (
             <li key={item.title} className={`card reveal reveal-delay-${(i % 3) + 1}`}><h3>{item.title}</h3><p>{item.body}</p></li>
@@ -60,7 +64,7 @@ export default function About() {
         </ul>
       </Section>
 
-      <Section tone="muted" layout="split" eyebrow={a.facts.eyebrow} title={a.facts.title}>
+      <Section layout="split" eyebrow={a.facts.eyebrow} title={a.facts.title}>
         <dl className="facts reveal">
           <div><dt>{a.facts.displayName}</dt><dd className="latin">{company.legalName}</dd></div>
           <div><dt>{a.facts.legalEntity}</dt><dd className="latin">{company.registeredName}</dd></div>

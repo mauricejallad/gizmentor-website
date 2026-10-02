@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { useLocale } from '../../i18n/useLocale';
+import CircleIcon from './CircleIcon';
 
 /**
  * variant: 'primary' | 'secondary' | 'ghost'
@@ -12,8 +12,8 @@ export default function Button({ to, href, variant = 'primary', icon = true, chi
   if (href) {
     return (
       <a href={href} className={cls} target="_blank" rel="noopener" {...rest}>
+        {icon && <CircleIcon icon="external" />}
         <span>{children}</span>
-        {icon && <ArrowUpRight size={16} aria-hidden="true" className="flip-rtl" />}
         <span className="sr-only"> {t.common.opensNewTab}</span>
       </a>
     );
@@ -23,8 +23,8 @@ export default function Button({ to, href, variant = 'primary', icon = true, chi
   const linkProps = to.startsWith('#') ? { href: target } : { to: target };
   return (
     <Tag {...linkProps} className={cls} {...rest}>
+      {icon && <CircleIcon icon={to.startsWith('#') ? 'down' : 'right'} />}
       <span>{children}</span>
-      {icon && <ArrowRight size={16} aria-hidden="true" className="flip-rtl" />}
     </Tag>
   );
 }

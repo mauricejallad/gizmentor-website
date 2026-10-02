@@ -1,5 +1,6 @@
 import { StrictMode } from 'react';
 import { createRoot, hydrateRoot } from 'react-dom/client';
+import '@fontsource-variable/inter-tight';
 import '@fontsource-variable/readex-pro';
 import App from './App.jsx';
 import './styles/index.css';
