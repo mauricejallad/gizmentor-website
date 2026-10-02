@@ -14,6 +14,7 @@ import accessoriesImg from '../assets/easelect/category-accessories.webp';
 import webLight from '../assets/easelect/easelect-web-light.webp';
 import webDark from '../assets/easelect/easelect-web-dark.webp';
 import inHandImg from '../assets/easelect/easelect-in-hand.webp';
+import inHandLight from '../assets/easelect/easelect-in-hand-light.webp';
 import ThemedImage from '../components/ui/ThemedImage';
 
 const categoryImages = { electronics: electronicsImg, fashion: fashionImg, accessories: accessoriesImg };
@@ -91,7 +92,7 @@ export default function Easelect() {
             </div>
           </article>
           <article className="card card-media card-platform reveal reveal-delay-1">
-            <div className="card-media-frame"><img src={inHandImg} alt={e.platform.mobile.imageAlt} width="800" height="1200" loading="lazy" /></div>
+            <div className="card-media-frame"><ThemedImage light={inHandLight} dark={inHandImg} alt={e.platform.mobile.imageAlt} width="800" height="1200" /></div>
             <div className="card-media-body">
               <span className="icon-tile" aria-hidden="true"><Smartphone size={20} strokeWidth={1.6} /></span>
               <h3>{e.platform.mobile.title}</h3>

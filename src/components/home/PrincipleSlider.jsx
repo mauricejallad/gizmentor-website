@@ -1,13 +1,16 @@
 import { useState } from 'react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { useLocale } from '../../i18n/useLocale';
-import inHandImg from '../../assets/easelect/easelect-in-hand.webp';
+import ThemedImage from '../ui/ThemedImage';
+import inHandDark from '../../assets/easelect/easelect-in-hand.webp';
+import inHandLight from '../../assets/easelect/easelect-in-hand-light.webp';
 import challengeImg from '../../assets/easelect/easelect-challenge.webp';
 import electronicsImg from '../../assets/easelect/category-electronics.webp';
 import gadgetsImg from '../../assets/images/about-gadgets.webp';
 import facadeImg from '../../assets/images/investors-facade.webp';
 
-const images = [inHandImg, challengeImg, electronicsImg, gadgetsImg, facadeImg];
+// The first photo shows the Easelect app, so it follows the theme.
+const images = [{ light: inHandLight, dark: inHandDark }, challengeImg, electronicsImg, gadgetsImg, facadeImg];
 
 /**
  * Red full-bleed slider of the five recommendation principles: counter and arrows, a giant title,
@@ -24,8 +27,9 @@ export default function PrincipleSlider() {
   return (
     <section className="slider-band section-accent" aria-roledescription="carousel" aria-label={p.eyebrow}>
       <div className="slider-media" aria-hidden="true">
-        {images.map((src, i) => (
-          <img key={src} src={src} alt="" width="1536" height="1024" loading="lazy" className={i === index ? 'is-active' : ''} />
+        {images.map((src, i) => (typeof src === 'string'
+          ? <img key={src} src={src} alt="" width="1536" height="1024" loading="lazy" className={i === index ? 'is-active' : ''} />
+          : <ThemedImage key={src.light} light={src.light} dark={src.dark} alt="" width="800" height="1200" className={i === index ? 'is-active' : ''} />
         ))}
       </div>
       <div className="container slider-inner">
