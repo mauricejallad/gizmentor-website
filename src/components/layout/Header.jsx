@@ -91,6 +91,10 @@ export default function Header() {
           ))}
           <li><NavLink to={to('/contact')}>{t.common.contact}</NavLink></li>
         </ul>
+        <div className="container mobile-menu-tools">
+          <LanguageSwitch className="tool-pill" />
+          <ThemeToggle />
+        </div>
       </nav>
     </header>
   );

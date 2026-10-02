@@ -261,8 +261,8 @@ strong, b { font-weight: 600; }
   display: grid; grid-template-columns: auto minmax(0, 1fr) auto; grid-template-areas: 'logo . tools' 'nav nav nav';
   align-items: center; column-gap: 32px; padding-top: 28px;
 }
-.logo { grid-area: logo; display: inline-flex; align-items: center; gap: 12px; font-weight: 600; font-size: 1.1875rem; letter-spacing: -0.03em; flex-shrink: 0; }
-.logo svg { flex-shrink: 0; }
+.logo { grid-area: logo; display: inline-flex; align-items: center; gap: 8px; font-weight: 700; font-size: 1.4375rem; letter-spacing: -0.035em; flex-shrink: 0; }
+.logo svg { flex-shrink: 0; width: 40px; height: 40px; }
 .logo-word { unicode-bidi: isolate; }
 .site-nav { grid-area: nav; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); column-gap: 24px; margin-top: 32px; }
 .nav-link {
@@ -311,6 +311,7 @@ strong, b { font-weight: 600; }
 .mobile-menu li a { display: block; padding: 18px 0; font-size: clamp(1.75rem, 6vw, 2.5rem); font-weight: 500; letter-spacing: -0.04em; color: rgba(255, 255, 255, 0.72); }
 .mobile-menu li a.active, .mobile-menu li a:hover { color: #fff; }
 @keyframes menu-in { from { opacity: 0; transform: translateY(-12px); } }
+.mobile-menu-tools { display: none; gap: 8px; margin-top: 32px; }
 
 /* 8. Footer ---------------------------------------------------------------- */
 .site-footer { background: var(--bg); color: var(--text); padding: clamp(64px, 7vw, 100px) 0 40px; border-top: 1px solid var(--line); }
@@ -820,7 +821,17 @@ select.form-control { appearance: auto; }
   .footer-bottom { flex-direction: column; align-items: flex-start; }
   .header-tools { gap: 6px; }
   .tool-pill { padding: 0 12px; }
-  .logo { font-size: 1.0625rem; gap: 10px; }
+  .logo { font-size: 1.25rem; gap: 7px; }
+  .logo svg { width: 34px; height: 34px; }
+  .header-inner, .site-header.is-pinned .header-inner { column-gap: 12px; }
+  .header-tools { gap: 4px; }
+  .site-header :is(.tool-pill, .tool-button) { min-height: 36px; min-width: 36px; }
+  .site-header .header-tools .tool-pill { padding: 0 10px; font-size: 0.8125rem; }
+}
+@media (max-width: 359px) {
+  /* Smallest phones: the language and theme controls move into the menu. */
+  .header-tools > .tool-pill, .header-tools > .theme-toggle { display: none; }
+  .mobile-menu-tools { display: flex; }
   .split-panel { min-height: 0; }
   .split-panel-quote { margin-top: 0; grid-template-columns: 40px minmax(0, 1fr); }
   .quote-mark { font-size: 4rem; }
