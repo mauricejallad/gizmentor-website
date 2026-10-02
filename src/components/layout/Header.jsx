@@ -91,7 +91,6 @@ export default function Header() {
           ))}
           <li><NavLink to={to('/contact')}>{t.common.contact}</NavLink></li>
         </ul>
-        <p className="container mobile-menu-email"><a href={`mailto:${company.email}`} className="latin">{company.email}</a></p>
       </nav>
     </header>
   );
