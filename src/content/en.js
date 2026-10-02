@@ -1,0 +1,603 @@
+/**
+ * English copy for every page. src/content/ar.js mirrors this file key for key;
+ * when you add or change a key here, change it there too.
+ * Facts that do not change with language (URLs, names, numbers) live in src/config/site.js.
+ * Source for company facts and positioning: GizMentor FZCO Corporate Profile.
+ */
+
+const en = {
+  common: {
+    skipToContent: 'Skip to content',
+    homeAria: 'GizMentor — home',
+    primaryNav: 'Primary',
+    mobileNav: 'Mobile',
+    nav: { home: 'Home', about: 'About', ventures: 'Ventures', easelect: 'Easelect', magfusion: 'MagFusion', investors: 'Investors' },
+    contact: 'Contact',
+    menuOpen: 'Open menu',
+    menuClose: 'Close menu',
+    language: { label: 'العربية', lang: 'ar', aria: 'View this page in Arabic' },
+    theme: { toDark: 'Switch to dark theme', toLight: 'Switch to light theme' },
+    opensNewTab: '(opens in a new tab)',
+    toTop: 'Back to top',
+    scrollDown: 'Scroll to the next section',
+    next: 'Next',
+    previous: 'Previous',
+    statusAria: 'Status',
+    status: { webLive: 'Web platform live', mobileSoon: 'Mobile app launching soon', onEnquiry: 'Available on enquiry' },
+    address: {
+      line1: 'Building A1, Dubai Digital Park',
+      line2: 'Dubai Silicon Oasis',
+      city: 'Dubai',
+      country: 'United Arab Emirates',
+    },
+    jurisdiction: 'Dubai, United Arab Emirates',
+    issuingAuthority: 'Dubai Integrated Economic Zones Authority',
+    descriptor: 'AI, UX and commerce intelligence',
+    licensedActivities: ['E-commerce', 'Goods wholesaling', 'Wireless telecommunications equipment trading'],
+    trademark: 'The GizMentor name and logo are registered trademarks in the United Arab Emirates.',
+    tdra: 'MagFusion Air is registered with the UAE Telecommunications and Digital Government Regulatory Authority (TDRA).',
+    pillars: [
+      { key: 'build', title: 'Build', body: 'We create technology-driven platforms and products that address clearly identifiable consumer problems.' },
+      { key: 'launch', title: 'Launch', body: 'We take concepts from research and UX through technology and product development, and into the market.' },
+      { key: 'scale', title: 'Scale', body: 'We build commercially viable products designed to scale across markets, partnerships and digital ecosystems.' },
+    ],
+    capabilities: [
+      { icon: 'Compass', title: 'Product strategy', body: 'Start from a real, recurring customer problem and a clear commercial path.' },
+      { icon: 'PenTool', title: 'Experience design', body: 'Research-led journeys built around how people actually decide and buy.' },
+      { icon: 'Sparkles', title: 'Applied AI', body: 'AI that does useful work, such as research, comparison and reasoning.' },
+      { icon: 'Cpu', title: 'Technology', body: 'Lean, modern platforms engineered to ship quickly and extend easily.' },
+      { icon: 'ShoppingBag', title: 'Commerce', body: 'Licensed for e-commerce and trading, with hands-on retail experience.' },
+      { icon: 'Rocket', title: 'Execution', body: 'From concept to a regulated product in market. We finish what we start.' },
+    ],
+    ventureCards: {
+      easelect: {
+        kind: 'AI platform',
+        desc: 'An AI shopping research and product discovery platform. Shoppers describe the need; Easelect weighs specs, expert reviews and real-world feedback, then recommends what to buy, and why.',
+        facts: [
+          { label: 'Web platform', value: 'Live' },
+          { label: 'Mobile app', value: 'Launching soon' },
+        ],
+        cta: 'Explore Easelect',
+        imageAlt: 'The Easelect web platform home page: “Hi, I’m your AI shopping Mentor”, with a search box and suggested searches',
+      },
+      magfusion: {
+        kind: 'Consumer technology',
+        desc: 'An ultra-thin magnetic power bank, designed and brought to market by GizMentor.',
+        facts: [
+          { label: 'Regulatory', value: 'TDRA registered' },
+          { label: 'Availability', value: 'On enquiry' },
+        ],
+        cta: 'View MagFusion',
+        imageAlt: 'MagFusion Air magnetic power bank attached to the back of a phone, with its charge indicator lights on',
+      },
+    },
+    footer: {
+      tagline: 'AI, UX and commerce intelligence, helping people make better product choices.',
+      company: 'Company',
+      portfolio: 'Portfolio',
+      legal: 'Legal',
+      terms: 'Terms',
+      privacy: 'Privacy',
+      returns: 'Returns',
+      rights: 'All rights reserved.',
+      registered: 'Registered as',
+    },
+  },
+
+  home: {
+    overview: {
+      value: '02',
+      label: 'Ventures in market',
+      body: 'Shared capabilities in strategy, design, AI and commerce feed one operating model. Every venture it produces goes to market to the same standard.',
+    },
+    numbers: {
+      eyebrow: 'Easelect at a glance',
+      main: { value: '08', label: 'Steps in the Easelect intelligence engine, from intent to recommendation' },
+      items: [
+        { value: '06', label: 'Stages in the shopping journey, from the need to the retailer' },
+        { value: '03', label: 'Category-aware product areas in development' },
+      ],
+    },
+    principles: { note: 'The principles behind every Easelect recommendation.' },
+    approach: { eyebrow: 'Our approach', tabs: { model: 'How we work', capabilities: 'Capabilities' } },
+    hero: {
+      badge: 'GizMentor FZCO · Dubai, UAE',
+      title: 'The company behind smarter everyday decisions.',
+      lead: 'GizMentor brings AI, user experience and commerce intelligence together to help people make better product choices, and builds the ventures that take it to market.',
+      primary: 'Partner with us',
+      secondary: 'How we work',
+    },
+    diagram: {
+      label: 'How GizMentor works',
+      capabilities: 'Capabilities',
+      capabilityItems: ['Product strategy', 'Experience design', 'Applied AI', 'Technology', 'Commerce & trading licence'],
+      ventures: 'Ventures',
+      easelect: { desc: 'AI shopping research platform', status: 'Live' },
+      magfusion: { desc: 'Ultra-thin magnetic power bank', status: 'On enquiry' },
+      next: 'Next venture, built with partners',
+      caption: 'Shared capabilities feed one operating model, which produces each venture.',
+    },
+    philosophy: {
+      eyebrow: 'Who we are',
+      title: 'The right product for the right person.',
+      body: 'GizMentor applies that idea to commerce: customer understanding, product information and technology, combined to support more informed decisions.',
+      more: 'About GizMentor',
+    },
+    name: {
+      gizmo: 'Gizmo',
+      mentor: 'Mentor',
+      caption: 'The name comes from a habit of researching before buying, and from the idea that every gadget deserves a good mentor.',
+    },
+    ventures: { eyebrow: 'Ventures', title: 'Two ventures in market. Built to the same standard.' },
+    model: { eyebrow: 'How we work', title: 'One model, from first insight to scale.', lead: 'Every GizMentor venture moves through the same disciplined path.' },
+    partners: {
+      eyebrow: 'Partnerships',
+      title: 'Scale comes from the right partners.',
+      lead: 'Tell us what you want to build or bring to market, and we will find the right way to work together.',
+      rows: [
+        { type: 'partnership', icon: 'Blocks', title: 'Strategic & technology partners', body: 'Telecoms, technology companies and brands that want to build with us.' },
+        { type: 'retail', icon: 'Store', title: 'Merchants & affiliate networks', body: 'A product-discovery channel that connects your catalogue with shoppers whose needs it meets.' },
+        { type: 'investor', icon: 'ChartColumn', title: 'Investors', body: 'The company, its ventures, and where we are taking them next.' },
+      ],
+    },
+    capabilities: {
+      eyebrow: 'Why GizMentor',
+      title: 'Strategy, design, AI and commerce, under one roof.',
+      lead: 'The capabilities needed to take a product from idea to market usually sit across separate companies. We combine them.',
+    },
+    cta: {
+      title: 'Building the next generation of intelligent commerce.',
+      body: 'We work with investors, strategic and technology partners, and merchants and affiliate networks.',
+      primary: 'Talk to GizMentor',
+      secondary: 'Investor overview',
+    },
+  },
+
+  about: {
+    hero: {
+      eyebrow: 'About GizMentor',
+      title: 'AI, UX and commerce intelligence.',
+      lead: 'GizMentor FZCO is a Dubai-based technology and e-commerce company. We help people make better product choices through intelligent research and thoughtful user experience.',
+      imageAlt: 'Everyday gadgets arranged in a precise grid, with one pair of headphones marked by a small red dot',
+    },
+    story: {
+      eyebrow: 'The thinking behind GizMentor',
+      title: 'It started with researching before buying.',
+      body: [
+        'Every purchase meant comparing expert reviews, specifications, alternatives, customer feedback and prices to understand which product best suited its intended use.',
+        'That practice of self-mentoring gave the company its name, and its philosophy: the right product for the right person.',
+      ],
+    },
+    vision: {
+      eyebrow: 'Purpose',
+      title: 'Decision intelligence for commerce.',
+      items: [
+        { label: 'Vision', body: 'Make product discovery intelligent, personal and grounded in evidence.' },
+        { label: 'Mission', body: 'Use AI, commerce data and human-centred UX to match people with products that meet their needs.' },
+      ],
+    },
+    evolution: {
+      eyebrow: 'Company evolution',
+      title: 'From product research to a flagship AI venture.',
+      items: [
+        { label: 'Stage 1', title: 'Product discovery and research', body: 'Understanding which products suit which needs, and why.' },
+        { label: 'Stage 2', title: 'Owned and white-label products', body: 'Developing and bringing products such as MagFusion to market.' },
+        { label: 'Stage 3', title: 'Easelect, the flagship venture', body: 'An AI shopping research platform built on that experience.' },
+        { label: 'Ambition', title: 'Broader AI capabilities', body: 'Applying AI and intelligent decision systems across commerce and enterprise.' },
+      ],
+    },
+    principles: {
+      eyebrow: 'Recommendation principles',
+      title: 'How we think a recommendation should work.',
+      items: [
+        { title: 'Relevance', body: 'Start with the customer’s needs, preferences and intended use.' },
+        { title: 'Evidence', body: 'Bring product information, expert assessments and consumer feedback together.' },
+        { title: 'Transparency', body: 'Explain relevant strengths, trade-offs and research sources.' },
+        { title: 'User control', body: 'Support the decision while keeping the final choice with the customer.' },
+        { title: 'Responsible AI', body: 'Use AI to help people understand their options and make informed decisions.' },
+      ],
+    },
+    whatWeDo: {
+      eyebrow: 'What we do',
+      title: 'Four areas, one purpose.',
+      items: [
+        { title: 'E-commerce', body: 'Selling and enabling commerce online.' },
+        { title: 'Digital products', body: 'Technology-driven platforms such as Easelect.' },
+        { title: 'Consumer technology', body: 'Physical products such as MagFusion.' },
+        { title: 'Telecom equipment trading', body: 'Wireless telecommunications equipment.' },
+      ],
+    },
+    facts: {
+      eyebrow: 'Corporate details',
+      title: 'A licensed, registered UAE company.',
+      displayName: 'Display name',
+      legalEntity: 'Legal entity',
+      jurisdiction: 'Jurisdiction',
+      authority: 'Licensing authority',
+      headquarters: 'Address',
+      licensed: 'Licensed activities',
+      trademark: 'Trademark',
+    },
+    cta: { title: 'Work with GizMentor.', primary: 'Get in touch', secondary: 'See our ventures' },
+  },
+
+  ventures: {
+    hero: {
+      eyebrow: 'Ventures',
+      title: 'A portfolio of technology ventures, not a catalogue.',
+      lead: 'GizMentor is the parent company and innovation platform behind each venture, digital platforms and physical products alike.',
+    },
+    portfolio: { eyebrow: 'Current portfolio', title: 'Two ventures. One operating model.' },
+    criteria: {
+      eyebrow: 'How we choose',
+      title: 'What makes a GizMentor venture.',
+      items: [
+        { title: 'A real, recurring problem', body: 'Something people experience often enough that solving it changes behaviour.' },
+        { title: 'A clear path to revenue', body: 'Commerce, partnerships or direct sales. The business model is designed in from day one.' },
+        { title: 'Room to scale', body: 'Products that can extend across categories, markets and digital ecosystems.' },
+      ],
+    },
+    model: { eyebrow: 'How we build', title: 'Build. Launch. Scale.' },
+    cta: {
+      title: 'Partner on a venture.',
+      body: 'We collaborate with technology partners, merchants and investors at every stage.',
+      primary: 'Talk to GizMentor',
+    },
+  },
+
+  easelect: {
+    hero: {
+      eyebrow: 'Easelect · A GizMentor venture',
+      title: 'Easelect.',
+      tagline: 'AI. Built for shopping.',
+      lead: 'An AI shopping research and product discovery platform designed around customer intent. Shoppers describe what they need, explore a focused shortlist, see why each product fits and compare retailer offers.',
+      primary: 'Visit Easelect',
+      secondary: 'Partner with Easelect',
+    },
+    screens: {
+      caption: 'Screens from the Easelect app',
+      home: 'Easelect app home screen asking what you are shopping for, with suggested searches',
+      question: 'Easelect asking a follow-up question about the style of headphones the shopper wants',
+      sources: 'Easelect explaining how it researched a recommendation, with the review sources it read',
+      compare: 'Easelect comparison table of two headphones by price, delivery, rating, battery and noise cancelling',
+      prices: 'Easelect price comparison listing retailers by lowest total price including delivery',
+      product: 'Easelect product detail with price, delivery and a button to continue to the retailer',
+    },
+    problem: {
+      eyebrow: 'The customer’s challenge',
+      title: 'More choice needs better judgment.',
+      imageAlt: 'A pile of near-identical product boxes, price tags and spec sheets beside a single chosen headphone case',
+      items: [
+        'Too many products to evaluate',
+        'Research scattered across multiple websites',
+        'Generic recommendations that overlook individual needs',
+        'Decision fatigue and uncertainty',
+        'Prices and retailer offers that are hard to compare',
+      ],
+    },
+    solution: {
+      eyebrow: 'Understanding before recommending',
+      title: 'A research agent that works for the shopper.',
+      statement: 'Conventional shopping means search, filter, browse, research, compare and decide, repeated across website after website.',
+      muted: ' Easelect understands the need first, then recommends, with the evidence and the trade-offs in view.',
+    },
+    journey: {
+      eyebrow: 'The Easelect journey',
+      title: 'From the need to the retailer, in six steps.',
+      stages: [
+        { title: 'Describe the need', body: 'Explain what you are shopping for and what matters to you.' },
+        { title: 'Clarify preferences', body: 'Follow-up questions narrow the search around intended use, budget and preferences.' },
+        { title: 'Explore relevant products', body: 'Review a focused shortlist and the reasons behind each recommendation.' },
+        { title: 'Understand the differences', body: 'Compare features, suitability, strengths and trade-offs.' },
+        { title: 'Compare retailer offers', body: 'Review prices, delivery information and retailer options.' },
+        { title: 'Continue to the retailer', body: 'Complete the purchase directly with the retailer you choose.' },
+      ],
+      continuity: 'Saved preferences and favourites let shoppers return to their research over time.',
+    },
+    engine: {
+      eyebrow: 'Intelligence engine',
+      title: 'How Easelect connects intent with evidence.',
+      lead: 'A high-level view of the architecture that links what the customer needs with product evidence and merchant data.',
+      steps: [
+        { title: 'User intent', body: 'Captures what the customer needs.' },
+        { title: 'Intent engine', body: 'Interprets goals, preferences and use cases.' },
+        { title: 'Planning and rules', body: 'Sets the category, filters and research requirements.' },
+        { title: 'Product retrieval', body: 'Connects merchant feeds and commerce APIs.' },
+        { title: 'Research and evidence', body: 'Reviews product data, expert assessments and consumer feedback.' },
+        { title: 'Evaluation and scoring', body: 'Assesses suitability across multiple signals.' },
+        { title: 'Commerce intelligence', body: 'Considers price, location and availability.' },
+        { title: 'Personalised recommendations', body: 'Returns a concise, relevant shortlist.' },
+      ],
+    },
+    platform: {
+      eyebrow: 'Platform',
+      title: 'Built for web and mobile.',
+      web: { title: 'Web platform', body: 'Available now at easelect.ai. Research any product from the browser.', imageAlt: 'The Easelect web platform home page with a search box and suggested searches' },
+      mobile: { title: 'Mobile app', body: 'A native app bringing Easelect research into the moment of purchase, wherever it happens.', imageAlt: 'Hands holding a phone showing the Easelect app home screen' },
+    },
+    categories: {
+      eyebrow: 'Categories and markets',
+      title: 'Different products need different decisions.',
+      note: 'Category-aware logic and agents are in development.',
+      items: [
+        { key: 'electronics', title: 'Electronics', body: 'Performance, specifications, compatibility, reliability and value.', imageAlt: 'A laptop, smartphone, wireless earbuds, a USB-C cable and a smartwatch laid out on a light surface' },
+        { key: 'fashion', title: 'Fashion', body: 'Size, fit, style, material, personal preferences and availability.', imageAlt: 'A folded knit sweater, white sneakers, a leather belt and sunglasses laid out on a light surface' },
+        { key: 'accessories', title: 'Accessories', body: 'Compatibility, intended use and the products they need to work with.', imageAlt: 'A phone case, a magnetic power bank, a watch strap, a charger and a cable pouch laid out on a light surface' },
+      ],
+      marketLabel: 'Initial priority market',
+      market: 'United States',
+      marketBody: 'Availability, shipping eligibility and local pricing decide whether an offer is relevant to the shopper.',
+      nextLabel: 'Future expansion',
+      next: 'UAE · Europe · Arab markets · other international markets',
+      nextBody: 'Multilingual support is planned.',
+    },
+    partnership: {
+      eyebrow: 'Partnership value',
+      title: 'Connecting product catalogues with customer intent.',
+      items: [
+        { title: 'For customers', body: 'Research that reflects their needs, preferences and budget, with relevant choices and a clearer path to a decision.' },
+        { title: 'For merchants', body: 'A product-discovery channel that connects products with customers whose needs they meet.' },
+        { title: 'For affiliate networks', body: 'An AI-native commerce layer designed to work with merchant and affiliate product sources.' },
+      ],
+      modelTitle: 'Business model',
+      model: 'GizMentor and Easelect may earn affiliate commissions on purchases that start in Easelect through participating merchants. Product suitability stays central to every recommendation.',
+    },
+    cta: {
+      title: 'Try Easelect, or build with us.',
+      body: 'Shoppers can start on the web today. Merchants, affiliate networks and technology partners: let’s talk.',
+      primary: 'Visit Easelect',
+      secondary: 'Partnership enquiry',
+    },
+  },
+
+  magfusion: {
+    breadcrumbPortfolio: 'Portfolio',
+    breadcrumbAria: 'Breadcrumb',
+    hero: {
+      eyebrow: 'MagFusion · A GizMentor product',
+      tagline: 'Magnetic alignment, redefined.',
+      summary: 'An ultra-thin magnetic power bank for MagSafe-compatible iPhones, slim enough to stay on your phone all day.',
+      primary: 'Enquire to buy',
+      secondary: 'Retail & wholesale',
+      imageAlt: 'Two MagFusion Air magnetic power banks on a lit display',
+    },
+    story: {
+      eyebrow: 'The refinement',
+      text: 'Most magnetic power banks trade build quality for convenience: bulky, plastic-heavy and loose on the phone. We broke the category down, kept what works and refined the weak points: a slimmer profile, a confident magnetic hold and a product that feels permanent in the hand.',
+    },
+    highlightsAria: 'Product highlights',
+    highlights: [
+      { key: 'thin', title: 'Ultra-thin by design', desc: 'A card-slim profile that stays attached without turning your phone into a brick.', alt: 'MagFusion Air shown beside playing cards to illustrate its thin profile' },
+      { key: 'magnetic', title: 'Magnetic alignment', desc: 'Snaps into place on MagSafe-compatible iPhones for a secure, centred hold.', alt: 'Illustration of the MagFusion Air magnetic charging ring' },
+      { key: 'wired', title: 'Everyday power', desc: '5000mAh of capacity for top-ups through the day, wherever you are.', alt: 'MagFusion Air charging a smartphone' },
+    ],
+    galleryAria: 'MagFusion Air in use',
+    gallery: {
+      lifestyle: 'MagFusion Air on a table in an airport lounge',
+      desk: 'MagFusion Air attached to a phone on a desk beside a laptop',
+      running: 'A runner holding a phone with MagFusion Air attached',
+      inHand: 'Person on a call with MagFusion Air attached to their phone',
+    },
+    specs: {
+      eyebrow: 'Specifications',
+      title: 'Technical details.',
+      // Rows with value `null` are hidden. Fill them in only from the verified spec sheet.
+      items: [
+        { label: 'Capacity', value: '5000mAh' },
+        { label: 'Attachment', value: 'Magnetic, MagSafe-compatible' },
+        { label: 'Compatibility', value: 'MagSafe-compatible iPhone models (iPhone 12 and later)' },
+        { label: 'Profile', value: 'Ultra-thin' },
+        { label: 'Wireless output', value: null },
+        { label: 'Wired input / output', value: null },
+        { label: 'Weight', value: null },
+        { label: 'Dimensions', value: null },
+        { label: 'Finish', value: null },
+        { label: 'Regulatory', value: 'Registered with the UAE TDRA' },
+      ],
+    },
+    method: {
+      eyebrow: 'How it was made',
+      title: 'Select. Test. Refine.',
+      items: [
+        { title: 'Select', body: 'We source practical, high-utility products whose design or build quality falls short.' },
+        { title: 'Test', body: 'We stress-test the mechanics, evaluate the materials and find where the design fails.' },
+        { title: 'Refine', body: 'We upgrade what matters and re-engineer the weak points into a better product.' },
+      ],
+    },
+    compliance: {
+      eyebrow: 'Compliance',
+      title: 'Registered for the UAE market.',
+      regNo: 'Registration no.',
+      disclaimer: 'Product registration confirms the device’s type approval for the UAE market. It is not an endorsement of the product or of GizMentor.',
+    },
+    cta: {
+      title: 'Get MagFusion Air.',
+      body: 'For individual orders, retail stocking or wholesale enquiries, contact our team.',
+      primary: 'Enquire about MagFusion Air',
+      secondary: 'Returns policy',
+    },
+  },
+
+  investors: {
+    hero: {
+      eyebrow: 'Investors & partners',
+      title: 'A UAE technology company building a portfolio of scalable ventures.',
+      lead: 'An overview of who we are, what we have built, what we are building now, and why it can scale.',
+      tocAria: 'On this page',
+      imageAlt: 'Modern building facade with vertical aluminium fins catching low evening light',
+    },
+    toc: {
+      overview: 'Company overview',
+      vision: 'Vision',
+      problem: 'Market problem',
+      strategy: 'Company evolution',
+      easelect: 'Easelect opportunity',
+      capability: 'Product & technology',
+      execution: 'Existing execution',
+      foundation: 'Company foundation',
+      growth: 'Future direction',
+      contact: 'Contact',
+    },
+    metricsCaption: 'Figures are reported as of the date shown.',
+    overview: {
+      lead: 'GizMentor is a Dubai-based technology and e-commerce company working where AI, UX and commerce intelligence meet. We identify real consumer problems and build the platforms and products that solve them.',
+      facts: [
+        { dt: 'Display name', dd: 'GizMentor FZCO' },
+        { dt: 'Legal entity', dd: 'GIZMENTOR - FZCO' },
+        { dt: 'Jurisdiction', dd: 'Dubai, United Arab Emirates' },
+        { dt: 'Location', dd: 'Dubai Digital Park, Dubai Silicon Oasis' },
+        { dt: 'Operating areas', dd: 'E-commerce · Digital products · Consumer technology · Telecom equipment trading' },
+        { dt: 'Portfolio', dd: 'Easelect (AI platform) · MagFusion (consumer product)' },
+      ],
+    },
+    vision: {
+      statement: 'Make product discovery intelligent, personal and grounded in evidence.',
+      muted: ' Our mission: use AI, commerce data and human-centred UX to match people with products that meet their needs.',
+    },
+    problem: {
+      title: 'Buying decisions are harder than they should be.',
+      p1: 'Consumers face abundant choice but fragmented information: specifications, expert reviews, video content and owner feedback are spread across many sources. The result is time-consuming research and low-confidence decisions.',
+      p2: 'Retailers, meanwhile, compete for shoppers who arrive uncertain. A trusted layer that resolves that uncertainty creates value on both sides of the transaction.',
+    },
+    strategy: { title: 'From product research to a flagship AI venture.', lead: 'Each stage built the capability the next one needed.' },
+    easelect: {
+      title: 'Our flagship venture.',
+      lead: 'Easelect is an AI shopping research and product discovery platform. It turns a natural-language need into requirements, researches and compares products across expert and real-world sources, and recommends with evidence, prices and availability.',
+      points: [
+        { strong: 'Position', text: 'at the decision point of the commerce journey.' },
+        { strong: 'Model', text: 'one intelligence layer for web, mobile and partner channels.' },
+        { strong: 'Business model', text: 'affiliate commissions on purchases through participating merchants.' },
+        { strong: 'First market', text: 'the United States, with the UAE, Europe and Arab markets to follow.' },
+      ],
+      primary: 'Easelect in detail',
+      secondary: 'Visit easelect.ai',
+    },
+    capability: {
+      title: 'In-house across the full product lifecycle.',
+      items: [
+        { title: 'Product & UX', body: 'Research-led product strategy and experience design for consumer journeys.' },
+        { title: 'AI & platforms', body: 'Agentic AI research workflows and modern web and mobile platforms.' },
+        { title: 'Physical products', body: 'Sourcing, product refinement, regulatory registration and commercialisation.' },
+      ],
+    },
+    execution: {
+      title: 'We have already taken a product to market.',
+      body: 'An ultra-thin magnetic power bank, developed and commercialised by GizMentor and registered with the UAE TDRA, demonstrating our ability to bring a physical consumer technology product into a regulated market.',
+      cta: 'View MagFusion',
+      imageAlt: 'MagFusion Air power bank',
+    },
+    foundation: {
+      title: 'A licensed, registered UAE company.',
+      licence: { title: 'Incorporation & licence', body: 'GIZMENTOR - FZCO is licensed by the Dubai Integrated Economic Zones Authority. Licensed activities include:', number: 'Licence no.' },
+      trademark: { title: 'Trademark', number: 'Reg. no.' },
+      product: { title: 'Product registration', number: 'Reg. no.' },
+      disclaimer: 'Licences and registrations relate to permitted business activities and product type approval. They do not constitute an endorsement of GizMentor by any authority, nor any approval of an investment.',
+    },
+    growth: {
+      title: 'Where we are going next.',
+      note: 'Future ambitions, not current service availability.',
+      items: [
+        { title: 'Launch Easelect mobile', body: 'Extend the live web platform to a native mobile app.' },
+        { title: 'Deeper personalisation', body: 'Recommendations that learn preferences, with greater price awareness.' },
+        { title: 'In-app commerce journeys', body: 'More of the purchase journey completed inside Easelect.' },
+        { title: 'AI visualisation', body: '3D and product video experiences that show products in context.' },
+        { title: 'New markets and languages', body: 'The UAE, Europe and Arab markets, with multilingual support.' },
+        { title: 'A broader technology group', body: 'AI, automation and intelligent decision systems across commerce and enterprise. Internal tools may become services for other organisations.' },
+      ],
+    },
+    cta: {
+      title: 'Let’s talk about what we are building.',
+      body: 'For investment, strategic partnership or commercial collaboration, get in touch with the GizMentor team.',
+      primary: 'Investor enquiry',
+      secondary: 'Partnership enquiry',
+    },
+    disclaimer: 'This page is provided for general information only. It does not constitute an offer to sell, or a solicitation of an offer to buy, any securities, and should not be relied on for any investment decision. See also our',
+    disclaimerLink: 'Terms of Use',
+  },
+
+  contact: {
+    eyebrow: 'Contact',
+    title: 'Talk to GizMentor.',
+    lead: 'Investors, partners, merchants and customers: tell us what you have in mind and the right person will respond.',
+    emailLabel: 'Email',
+    addressLabel: 'Address',
+    fields: {
+      name: 'Name',
+      email: 'Email',
+      organisation: 'Organisation',
+      optional: '(optional)',
+      type: 'Enquiry type',
+      message: 'Message',
+    },
+    types: {
+      investor: 'Investor relations',
+      partnership: 'Strategic / technology partnership',
+      retail: 'Merchant & affiliate partnership',
+      easelect: 'Easelect',
+      magfusion: 'MagFusion: sales & wholesale',
+      support: 'Product support',
+      press: 'Press & media',
+      general: 'General enquiry',
+    },
+    submit: 'Send enquiry',
+    noteBefore: 'Submitting opens your email app with the message ready to send.',
+    noteAfter: (email) => `Your email app should now open with your message. If it didn’t, write to us at ${email}.`,
+    mail: {
+      subject: (type, name) => `${type} enquiry from ${name}`,
+      name: 'Name',
+      email: 'Email',
+      organisation: 'Organisation',
+      type: 'Enquiry type',
+      product: 'Product',
+      message: 'Message',
+    },
+  },
+
+  notFound: {
+    eyebrow: '404',
+    title: 'This page doesn’t exist.',
+    lead: 'It may have moved as part of our new website.',
+    home: 'Go to homepage',
+    ventures: 'Our ventures',
+  },
+
+  // English is the governing language of the legal pages; no notice is shown on them in English.
+  legal: null,
+
+  meta: {
+    '/': {
+      title: 'GizMentor — The company behind smarter everyday decisions',
+      description: 'GizMentor FZCO is a Dubai technology and e-commerce company bringing AI, UX and commerce intelligence together to help people make better product choices, through ventures including Easelect and MagFusion.',
+    },
+    '/about': {
+      title: 'About GizMentor — AI, UX and commerce intelligence, Dubai',
+      description: 'GizMentor’s vision is to make product discovery intelligent, personal and grounded in evidence. Our story, principles and corporate details.',
+    },
+    '/ventures': {
+      title: 'Ventures — The GizMentor portfolio',
+      description: 'GizMentor builds a portfolio of technology ventures: Easelect, an AI shopping research platform, and MagFusion, a consumer technology product line.',
+    },
+    '/easelect': {
+      title: 'Easelect — AI. Built for shopping. | A GizMentor venture',
+      description: 'Easelect is an AI shopping research and product discovery platform that understands what shoppers need, explains its recommendations and compares retailer offers. Operated by GizMentor FZCO.',
+    },
+    '/products/magfusion': {
+      title: 'MagFusion Air — Ultra-thin magnetic power bank | GizMentor',
+      description: 'MagFusion Air is an ultra-thin 5000mAh magnetic power bank for MagSafe-compatible iPhones, developed and commercialised by GizMentor and registered with the UAE TDRA.',
+    },
+    '/investors': {
+      title: 'Investors & Partners — GizMentor',
+      description: 'An overview of GizMentor FZCO for prospective investors and strategic partners: vision, company evolution, the Easelect opportunity, corporate foundation and future direction.',
+    },
+    '/contact': {
+      title: 'Contact GizMentor — Investors, partners & enquiries',
+      description: 'Talk to GizMentor about investment, partnerships, merchants and affiliates, Easelect or MagFusion.',
+    },
+    '/terms': { title: 'Terms of Use — GizMentor', description: 'Terms of Use for the GizMentor FZCO website.' },
+    '/privacy': { title: 'Privacy Policy — GizMentor', description: 'How GizMentor FZCO collects, uses and protects information.' },
+    '/returns': { title: 'Returns Policy — GizMentor', description: 'Returns policy for products purchased from GizMentor FZCO.' },
+    '/404': { title: 'Page not found — GizMentor', description: 'The page you are looking for does not exist.' },
+  },
+};
+
+export default en;

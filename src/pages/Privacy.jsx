@@ -1,11 +1,9 @@
-import React from 'react';
-import useScrollReveal from '../hooks/useScrollReveal';
+import LegalPage from '../components/ui/LegalPage';
 
 export default function Privacy() {
-  useScrollReveal();
 
   return (
-    <div className="page-terms">
+    <LegalPage kind="privacy">
       <article className="terms-content reveal">
         <h1 className="terms-title">Privacy Policy</h1>
         <p className="terms-effective">Effective Date: March 15, 2026</p>
@@ -106,12 +104,12 @@ export default function Privacy() {
             If you have any questions regarding this Privacy Policy, you may contact us at:
           </p>
           <p className="terms-contact">
-            <strong>GizMentor</strong><br />
-            IFZA Business Park, Dubai Silicon Oasis<br />
+            <strong>GizMentor FZCO</strong><br />
+            IFZA Business Park, Dubai Silicon Oasis, Dubai, UAE<br />
             Email: <a href="mailto:info@gizmentor.com">info@gizmentor.com</a>
           </p>
         </section>
       </article>
-    </div>
+    </LegalPage>
   );
 }

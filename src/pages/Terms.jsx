@@ -1,17 +1,15 @@
-import React from 'react';
-import useScrollReveal from '../hooks/useScrollReveal';
+import LegalPage from '../components/ui/LegalPage';
 
 export default function Terms() {
-  useScrollReveal();
 
   return (
-    <div className="page-terms">
+    <LegalPage kind="terms">
       <article className="terms-content reveal">
         <h1 className="terms-title">Terms of Use</h1>
         <p className="terms-effective">Effective Date: March 15, 2026</p>
 
         <p className="terms-intro">
-          Welcome to GizMentor. These Terms of Use govern your access to and use of the GizMentor website and any related content, products, services, and communications provided through it. By accessing or using this website, you agree to be bound by these Terms. If you do not agree, please do not use the website.
+          Welcome to GizMentor. This website is operated by GizMentor FZCO (&ldquo;GizMentor&rdquo;, &ldquo;we&rdquo;). These Terms of Use govern your access to and use of the GizMentor website and any related content, products, services, and communications provided through it. By accessing or using this website, you agree to be bound by these Terms. If you do not agree, please do not use the website.
         </p>
 
         <section>
@@ -97,12 +95,12 @@ export default function Terms() {
             If you have any questions regarding these Terms of Use, you may contact us at:
           </p>
           <p className="terms-contact">
-            <strong>GizMentor</strong><br />
-            IFZA Business Park, Dubai Silicon Oasis<br />
+            <strong>GizMentor FZCO</strong><br />
+            IFZA Business Park, Dubai Silicon Oasis, Dubai, UAE<br />
             Email: <a href="mailto:info@gizmentor.com">info@gizmentor.com</a>
           </p>
         </section>
       </article>
-    </div>
+    </LegalPage>
   );
 }

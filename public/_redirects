@@ -1,1 +1,6 @@
-/*    /index.html   200
+# Netlify fallback config (Vercel uses vercel.json). Prerendered pages are served as static files;
+# unknown paths fall through to 404.html automatically.
+/products/magfusion-air      /products/magfusion      301
+/products                    /products/magfusion      302
+/ar/products/magfusion-air   /ar/products/magfusion   301
+/ar/products                 /ar/products/magfusion   302

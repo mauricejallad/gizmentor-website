@@ -1,0 +1,35 @@
+/** GizMentor emblem, inlined from assets/gizmentor-emblem.svg (no network request). */
+import { useId } from 'react';
+
+export default function Emblem({ size = 32, title, className = '' }) {
+  const gid = useId();
+  const labelled = Boolean(title);
+  return (
+    <svg
+      viewBox="0 0 100.28 100.04"
+      width={size}
+      height={size}
+      className={className}
+      role={labelled ? 'img' : undefined}
+      aria-hidden={labelled ? undefined : true}
+      aria-label={title}
+      focusable="false"
+    >
+      <defs>
+        <radialGradient id={gid} cx="140.23" cy="47.09" r="42.18" gradientTransform="translate(-60.45 13.23) scale(.8)" gradientUnits="userSpaceOnUse">
+          <stop offset=".67" stopColor="#000" />
+          <stop offset="1" stopColor="#000" stopOpacity=".1" />
+        </radialGradient>
+      </defs>
+      <circle fill="#808080" cx="50.3" cy="50.32" r="50" />
+      <circle fill="#F30000" cx="50.26" cy="50.32" r="21.83" />
+      <g fill="#fff">
+        <polygon points="32.77 58.32 42.35 34.32 46.35 44.32 40.74 58.32 32.77 58.32" />
+        <polygon points="58.35 34.32 48.37 59.27 52.4 69.37 59.45 51.56 62.35 58.32 67.94 58.32 58.35 34.32" />
+        <path d="M86.8,50.32c0,10.08-4.09,19.2-10.69,25.81-6.61,6.61-15.73,10.69-25.81,10.69s-19.2-4.09-25.81-10.69c-6.61-6.61-10.69-15.73-10.69-25.81s4.09-19.2,10.69-25.81c6.61-6.61,15.73-10.69,25.81-10.69s19.2,4.09,25.81,10.69l-10.32,10.32c-3.96-3.96-9.44-6.41-15.49-6.41s-11.52,2.45-15.49,6.41c-3.96,3.96-6.41,9.44-6.41,15.49s2.45,11.52,6.41,15.49,9.44,6.41,15.49,6.41,11.52-2.45,15.49-6.41c3.96-3.96,6.41-9.44,6.41-15.49h14.6Z" />
+        <path d="M86.51,45.52h-23.65v12.8h23.15c.52-2.59.8-5.26.8-8,0-1.63-.11-3.23-.3-4.8Z" />
+      </g>
+      <path fill={`url(#${gid})`} opacity=".3" d="M52.4,69.37l7.04-17.8,2.9,6.75h23.66c-1.68,8.55-7.44,15.47-9.89,17.81-3.05,2.91-6.47,5.25-9.88,7.04l-13.83-13.8Z" />
+    </svg>
+  );
+}
