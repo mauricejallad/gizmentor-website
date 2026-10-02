@@ -8,8 +8,11 @@ import { LocaleProvider } from '../../i18n/LocaleContext';
 import { LOCALES } from '../../i18n/locales';
 
 export default function Layout({ locale }) {
-  const { pathname } = useLocation();
+  const { pathname, key } = useLocation();
   useScrollReveal(pathname);
+  // The first page comes prerendered and must not animate (its location key is 'default');
+  // later client navigations remount <main> and play a short entrance.
+  const navigated = key !== 'default';
   return (
     <LocaleProvider locale={locale}>
       <div className="site" lang={locale} dir={LOCALES[locale].dir}>
@@ -17,7 +20,7 @@ export default function Layout({ locale }) {
         <ScrollToTop />
         <SeoSync />
         <Header />
-        <main id="main" className="site-main" tabIndex={-1}>
+        <main id="main" key={pathname} className={`site-main ${navigated ? 'page-enter' : ''}`.trim()} tabIndex={-1}>
           <Outlet />
         </main>
         <Footer />

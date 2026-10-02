@@ -11,6 +11,10 @@ import challengeImg from '../assets/easelect/easelect-challenge.webp';
 import electronicsImg from '../assets/easelect/category-electronics.webp';
 import fashionImg from '../assets/easelect/category-fashion.webp';
 import accessoriesImg from '../assets/easelect/category-accessories.webp';
+import webLight from '../assets/easelect/easelect-web-light.webp';
+import webDark from '../assets/easelect/easelect-web-dark.webp';
+import inHandImg from '../assets/easelect/easelect-in-hand.webp';
+import ThemedImage from '../components/ui/ThemedImage';
 
 const categoryImages = { electronics: electronicsImg, fashion: fashionImg, accessories: accessoriesImg };
 
@@ -77,17 +81,23 @@ export default function Easelect() {
 
       <Section eyebrow={e.platform.eyebrow} title={e.platform.title}>
         <div className="card-grid card-grid-2">
-          <article className="card reveal">
-            <span className="icon-tile" aria-hidden="true"><Globe size={20} strokeWidth={1.6} /></span>
-            <h3>{e.platform.web.title}</h3>
-            <p>{e.platform.web.body}</p>
-            <StatusBadge label={t.common.status[web.key]} tone={web.tone} />
+          <article className="card card-media card-platform reveal">
+            <div className="card-media-frame"><ThemedImage light={webLight} dark={webDark} alt={e.platform.web.imageAlt} width="1400" height="809" /></div>
+            <div className="card-media-body">
+              <span className="icon-tile" aria-hidden="true"><Globe size={20} strokeWidth={1.6} /></span>
+              <h3>{e.platform.web.title}</h3>
+              <p>{e.platform.web.body}</p>
+              <StatusBadge label={t.common.status[web.key]} tone={web.tone} />
+            </div>
           </article>
-          <article className="card reveal reveal-delay-1">
-            <span className="icon-tile" aria-hidden="true"><Smartphone size={20} strokeWidth={1.6} /></span>
-            <h3>{e.platform.mobile.title}</h3>
-            <p>{e.platform.mobile.body}</p>
-            <StatusBadge label={t.common.status[mobile.key]} tone={mobile.tone} />
+          <article className="card card-media card-platform reveal reveal-delay-1">
+            <div className="card-media-frame"><img src={inHandImg} alt={e.platform.mobile.imageAlt} width="800" height="1200" loading="lazy" /></div>
+            <div className="card-media-body">
+              <span className="icon-tile" aria-hidden="true"><Smartphone size={20} strokeWidth={1.6} /></span>
+              <h3>{e.platform.mobile.title}</h3>
+              <p>{e.platform.mobile.body}</p>
+              <StatusBadge label={t.common.status[mobile.key]} tone={mobile.tone} />
+            </div>
           </article>
         </div>
       </Section>

@@ -54,7 +54,7 @@ const en = {
           { label: 'Mobile app', value: 'Launching soon' },
         ],
         cta: 'Explore Easelect',
-        imageAlt: 'Hands holding a phone showing the Easelect app home screen',
+        imageAlt: 'The Easelect web platform home page: “Hi, I’m your AI shopping Mentor”, with a search box and suggested searches',
       },
       magfusion: {
         kind: 'Consumer technology',
@@ -293,8 +293,8 @@ const en = {
     platform: {
       eyebrow: 'Platform',
       title: 'Built for web and mobile.',
-      web: { title: 'Web platform', body: 'Available now at easelect.ai. Research any product from the browser.' },
-      mobile: { title: 'Mobile app', body: 'A native app bringing Easelect research into the moment of purchase, wherever it happens.' },
+      web: { title: 'Web platform', body: 'Available now at easelect.ai. Research any product from the browser.', imageAlt: 'The Easelect web platform home page with a search box and suggested searches' },
+      mobile: { title: 'Mobile app', body: 'A native app bringing Easelect research into the moment of purchase, wherever it happens.', imageAlt: 'Hands holding a phone showing the Easelect app home screen' },
     },
     categories: {
       eyebrow: 'Categories and markets',

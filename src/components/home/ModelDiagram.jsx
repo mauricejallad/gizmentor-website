@@ -14,11 +14,13 @@ export default function ModelDiagram() {
         <div className="diagram-col">
           <p className="diagram-label">{d.capabilities}</p>
           <ul className="diagram-chips">
-            {d.capabilityItems.map((c) => <li key={c} className="chip"><span className="chip-dot" aria-hidden="true" />{c}</li>)}
+            {d.capabilityItems.map((c, i) => (
+              <li key={c} className="chip" style={{ '--i': i }}><span className="chip-dot" aria-hidden="true" />{c}</li>
+            ))}
           </ul>
         </div>
 
-        <div className="diagram-link diagram-link-in" aria-hidden="true"><span className="bracket" /><span className="wire" /></div>
+        <div className="diagram-link diagram-link-in" aria-hidden="true"><span className="bracket" /><span className="wire"><span className="pulse" /></span></div>
 
         <div className="diagram-col diagram-core-col">
           <div className="diagram-core">
@@ -31,13 +33,13 @@ export default function ModelDiagram() {
           </div>
         </div>
 
-        <div className="diagram-link diagram-link-out" aria-hidden="true"><span className="wire" /><span className="bracket" /></div>
+        <div className="diagram-link diagram-link-out" aria-hidden="true"><span className="wire"><span className="pulse" /></span><span className="bracket" /></div>
 
         <div className="diagram-col">
           <p className="diagram-label">{d.ventures}</p>
           <ul className="diagram-ventures">
-            {['easelect', 'magfusion'].map((k) => (
-              <li key={k} className="diagram-venture" data-venture={k}>
+            {['easelect', 'magfusion'].map((k, i) => (
+              <li key={k} className="diagram-venture" data-venture={k} style={{ '--i': i + 6 }}>
                 <span className="diagram-venture-head">
                   <span className="diagram-venture-name">{ventures[k].name}</span>
                   <span className="status status-live status-plain"><span className="status-dot" aria-hidden="true" />{d[k].status}</span>
@@ -45,7 +47,7 @@ export default function ModelDiagram() {
                 <span className="diagram-venture-desc">{d[k].desc}</span>
               </li>
             ))}
-            <li className="diagram-venture is-next">{d.next}</li>
+            <li className="diagram-venture is-next" style={{ '--i': 8 }}>{d.next}</li>
           </ul>
         </div>
       </div>

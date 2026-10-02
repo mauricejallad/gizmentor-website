@@ -5,17 +5,18 @@
 
    1. Tokens  2. Base  3. Layout  4. Typography  5. Buttons, badges, status
    6. Header / footer  7. Home  8. Sections & components  9. Pages
-   10. Easelect mockup  11. Legal  12. Motion  13. Responsive
+   10. Easelect app screens  11. Legal  12. Motion  12b. Depth & motion  13. Responsive
    ========================================================================== */
 
 /* 1. Tokens ---------------------------------------------------------------- */
 :root {
   color-scheme: light;
-  --bg: #ffffff;
-  --bg-muted: #f6f7f9;
+  /* Depth: an off-white canvas, a deeper tint for alternate sections, pure-white surfaces on top. */
+  --bg: #f6f7f9;
+  --bg-muted: #eef1f5;
   --surface: #ffffff;
-  --surface-2: #f6f7f9;
-  --line: #e6e8ec;
+  --surface-2: #f2f4f7;
+  --line: #e3e6eb;
   --line-strong: #d5d9e0;
   --wire: #b6bcc6;
   --text: #111318;
@@ -35,6 +36,11 @@
   --cue-magfusion: #5b6573;
   --shadow: 0 20px 40px rgba(17, 19, 24, 0.08);
   --shadow-strong: 0 20px 40px rgba(17, 19, 24, 0.18);
+  --shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.04), 0 6px 16px -6px rgba(16, 24, 40, 0.08);
+  --shadow-md: 0 2px 6px rgba(16, 24, 40, 0.05), 0 24px 48px -16px rgba(16, 24, 40, 0.18);
+  --glow-1: rgba(118, 146, 186, 0.22);  /* cool ambient light */
+  --glow-2: rgba(243, 0, 0, 0.06);       /* a breath of the emblem red */
+  --grid-dot: rgba(17, 19, 24, 0.07);
   --media-bg: #000000;
 
   --font: 'Readex Pro Variable', 'Readex Pro', system-ui, -apple-system, 'Segoe UI', Tahoma, sans-serif;
@@ -54,11 +60,11 @@
 /* Dark: chosen explicitly, or following the system when no script has run. */
 :root[data-theme='dark'] {
   color-scheme: dark;
-  --bg: #0e1015;
-  --bg-muted: #12151b;
-  --surface: #161920;
-  --surface-2: #1c2028;
-  --line: #262a33;
+  --bg: #0b0d11;
+  --bg-muted: #0f1217;
+  --surface: #151920;
+  --surface-2: #1b2028;
+  --line: #242932;
   --line-strong: #3a3f4a;
   --wire: #4a505c;
   --text: #eef0f3;
@@ -76,17 +82,26 @@
   --cue-easelect: #a495f0;
   --cue-magfusion: #9aa1ad;
   --shadow: none;
-  --shadow-strong: none;
+  --shadow-strong: 0 24px 48px -12px rgba(0, 0, 0, 0.6);
+  --shadow-sm: inset 0 1px 0 rgba(255, 255, 255, 0.03), 0 8px 24px -10px rgba(0, 0, 0, 0.55);
+  --shadow-md: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 28px 56px -16px rgba(0, 0, 0, 0.7);
+  --glow-1: rgba(82, 122, 196, 0.16);
+  --glow-2: rgba(255, 90, 90, 0.07);
+  --grid-dot: rgba(255, 255, 255, 0.05);
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme]) {
     color-scheme: dark;
-    --bg: #0e1015; --bg-muted: #12151b; --surface: #161920; --surface-2: #1c2028;
-    --line: #262a33; --line-strong: #3a3f4a; --wire: #4a505c;
+    --bg: #0b0d11; --bg-muted: #0f1217; --surface: #151920; --surface-2: #1b2028;
+    --line: #242932; --line-strong: #3a3f4a; --wire: #4a505c;
     --text: #eef0f3; --text-2: #c3c8d1; --text-3: #9aa1ad; --accent: #ff5a5a;
     --inverse-bg: #eef0f3; --inverse-text: #0e1015; --inverse-2: #5b616e; --inverse-line: #d5d9e0;
     --live: #4ade80; --live-text: #4ade80; --soon: #fbbf24; --soon-text: #fbbf24;
-    --cue-easelect: #a495f0; --cue-magfusion: #9aa1ad; --shadow: none; --shadow-strong: none;
+    --cue-easelect: #a495f0; --cue-magfusion: #9aa1ad; --shadow: none;
+    --shadow-strong: 0 24px 48px -12px rgba(0, 0, 0, 0.6);
+    --shadow-sm: inset 0 1px 0 rgba(255, 255, 255, 0.03), 0 8px 24px -10px rgba(0, 0, 0, 0.55);
+    --shadow-md: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 28px 56px -16px rgba(0, 0, 0, 0.7);
+    --glow-1: rgba(82, 122, 196, 0.16); --glow-2: rgba(255, 90, 90, 0.07); --grid-dot: rgba(255, 255, 255, 0.05);
   }
 }
 
@@ -323,6 +338,8 @@ strong, b { font-weight: 500; }
 .venture-media img { width: 100%; height: 100%; object-fit: cover; }
 [data-venture='easelect'] .venture-media img { object-position: center 30%; }
 [data-venture='magfusion'] .venture-media { background: #ffffff; }
+:root[data-theme='dark'] [data-venture='magfusion'] .venture-media { background: #000000; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme]) [data-venture='magfusion'] .venture-media { background: #000000; } }
 [data-venture='magfusion'] .venture-media img { object-fit: contain; padding: 4%; }
 .venture-body { flex-grow: 1; }
 .venture-facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid var(--line); margin-top: auto; }
@@ -424,8 +441,8 @@ strong, b { font-weight: 500; }
 .banner { margin-top: 48px; aspect-ratio: 21 / 9; }
 .card-media { padding: 0; overflow: hidden; gap: 8px; }
 .card-media img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-bottom: 1px solid var(--line); margin-bottom: 12px; }
-.card-media h3, .card-media p { padding-inline: clamp(20px, 2.4vw, 28px); }
-.card-media p { padding-bottom: clamp(20px, 2.4vw, 28px); }
+.card-media > h3, .card-media > p { padding-inline: clamp(20px, 2.4vw, 28px); }
+.card-media > p { padding-bottom: clamp(20px, 2.4vw, 28px); }
 
 /* Name equation: Gizmo + Mentor = GizMentor */
 .name-equation { padding: clamp(24px, 3vw, 32px); border: 1px solid var(--line); border-radius: 16px; background: var(--surface); }
@@ -583,6 +600,142 @@ select.form-control { appearance: auto; }
   *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
 }
 
+/* 12b. Depth & motion ------------------------------------------------------ */
+/* Planes: canvas (--bg) → tinted sections (--bg-muted) → white surfaces with soft layered shadows. */
+.site-header { background: color-mix(in srgb, var(--surface) 72%, transparent); backdrop-filter: saturate(160%) blur(16px); -webkit-backdrop-filter: saturate(160%) blur(16px); }
+.site-header.is-scrolled { background: color-mix(in srgb, var(--surface) 82%, transparent); box-shadow: 0 8px 24px -16px rgba(16, 24, 40, 0.25); }
+.site-header.is-menu-open { background: var(--surface); }
+.site-footer { background: var(--bg-muted); }
+.section-muted { background: linear-gradient(180deg, var(--bg-muted), color-mix(in srgb, var(--bg-muted) 70%, var(--bg))); }
+
+.card, .venture-card, .link-row, .engine-step, .journey-stage, .name-equation, .market.is-now,
+.diagram-venture:not(.is-next), .chip, .media-frame, .capabilities, .metrics { box-shadow: var(--shadow-sm); }
+.capabilities { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+.capability { border-color: var(--line); }
+.capabilities .capability:nth-child(3n) { border-inline-end: 0; }
+.capabilities .capability:nth-last-child(-n + 3) { border-bottom: 0; }
+.contact-form { background: var(--surface); box-shadow: var(--shadow-md); }
+.diagram { background: color-mix(in srgb, var(--surface) 55%, var(--bg-muted)); box-shadow: inset 0 1px 0 color-mix(in srgb, var(--surface) 80%, transparent), var(--shadow-sm); }
+.phone-shot { box-shadow: var(--shadow-md); }
+.cta-card {
+  position: relative; overflow: hidden; box-shadow: var(--shadow-md);
+  background:
+    radial-gradient(60% 120% at 100% 0%, rgba(243, 0, 0, 0.16), transparent 60%),
+    radial-gradient(50% 90% at 0% 100%, rgba(118, 146, 186, 0.18), transparent 60%),
+    var(--inverse-bg);
+}
+
+/* Ambient light and a faint dot grid behind every hero. */
+.hero, .page-hero { position: relative; isolation: isolate; overflow-x: clip; }
+.hero::before, .page-hero::before {
+  content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    radial-gradient(38% 46% at 8% 6%, var(--glow-1), transparent 70%),
+    radial-gradient(32% 40% at 92% 22%, var(--glow-2), transparent 70%),
+    linear-gradient(180deg, color-mix(in srgb, var(--surface) 70%, transparent), transparent 75%);
+  animation: ambient-drift 22s ease-in-out infinite alternate;
+}
+.hero::after, .page-hero::after {
+  content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background-image: radial-gradient(var(--grid-dot) 1px, transparent 1.3px);
+  background-size: 22px 22px;
+  -webkit-mask-image: radial-gradient(ellipse 75% 65% at 50% 0%, #000 25%, transparent 75%);
+  mask-image: radial-gradient(ellipse 75% 65% at 50% 0%, #000 25%, transparent 75%);
+}
+@keyframes ambient-drift {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to { transform: translate3d(2%, 1.5%, 0) scale(1.04); }
+}
+
+/* Hero entrance: pure CSS, so the prerendered page animates in without waiting for JavaScript. */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); filter: blur(6px); }
+  to { opacity: 1; transform: none; filter: none; }
+}
+.hero .badge, .hero .display, .hero .hero-lead, .hero .btn-row, .hero .status-list,
+.page-hero .badge, .page-hero .display, .page-hero .hero-lead {
+  animation: rise 0.8s var(--ease) both;
+}
+.hero .display, .page-hero .display { animation-delay: 0.08s; }
+.hero .hero-lead, .page-hero .hero-lead { animation-delay: 0.16s; }
+.hero .status-list { animation-delay: 0.2s; }
+.hero .btn-row { animation-delay: 0.24s; }
+.diagram .chip, .diagram .diagram-venture, .diagram-core { animation: rise 0.7s var(--ease) both; animation-delay: calc(0.35s + var(--i, 0) * 0.06s); }
+.diagram-core { --i: 5; }
+
+/* Signals travelling along the diagram's wires, and a living dot on the core. */
+.diagram-link .wire { position: relative; overflow: hidden; }
+.diagram-link .pulse {
+  position: absolute; inset-block: -1px; inset-inline-start: 0; width: 36%;
+  background: linear-gradient(90deg, transparent, var(--brand), transparent);
+  opacity: 0.7; animation: signal 2.8s linear infinite; animation-delay: 1.2s;
+}
+.diagram-link-out .pulse { animation-delay: 2.6s; }
+@keyframes signal { from { transform: translateX(-110%); } to { transform: translateX(310%); } }
+[dir='rtl'] .diagram-link .pulse { animation-name: signal-rtl; }
+@keyframes signal-rtl { from { transform: translateX(110%); } to { transform: translateX(-310%); } }
+.core-dot, .status-live .status-dot { animation: beacon 2.6s ease-out infinite; }
+@keyframes beacon {
+  0% { box-shadow: 0 0 0 0 color-mix(in srgb, currentColor 0%, transparent), 0 0 0 0 rgba(243, 0, 0, 0.35); }
+  70%, 100% { box-shadow: 0 0 0 8px rgba(243, 0, 0, 0); }
+}
+.status-live .status-dot { animation-name: beacon-live; }
+@keyframes beacon-live { 0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--live) 45%, transparent); } 70%, 100% { box-shadow: 0 0 0 7px transparent; } }
+
+/* Interactive surfaces lift on hover; images inside them ease forward. */
+.venture-card, .link-row, .card-platform { transition: transform 0.45s var(--ease), box-shadow 0.45s var(--ease), border-color 0.3s; }
+.venture-card:hover, .link-row:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--line-strong); }
+.venture-media img, .card-media img, .card-media-frame img { transition: transform 0.9s var(--ease); }
+.venture-card:hover .venture-media img { transform: scale(1.035); }
+.btn-primary { box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08) inset, 0 6px 16px -8px rgba(16, 24, 40, 0.5); }
+.btn-primary:hover { transform: translateY(-1px); opacity: 1; box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08) inset, 0 12px 24px -10px rgba(16, 24, 40, 0.55); }
+
+/* Reveal: a softer, deeper entrance than a plain fade. */
+.reveal-ready .reveal { transition: opacity 0.7s var(--ease), transform 0.7s var(--ease), filter 0.7s var(--ease); }
+.reveal-ready .reveal:not(.visible) { opacity: 0; transform: translateY(18px); filter: blur(6px); }
+
+/* Page-to-page: a short cross-fade when navigating inside the site. */
+.page-enter { animation: page-in 0.5s var(--ease) both; }
+@keyframes page-in { from { opacity: 0; transform: translateY(10px); } }
+
+/* Images settle as they scroll into view (browsers that support scroll-driven animations). */
+@supports (animation-timeline: view()) {
+  .banner img, .highlight .media-frame img, .gallery-grid .media-frame img, .split-media .media-frame img {
+    animation: settle linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 45%;
+  }
+  @keyframes settle { from { transform: scale(1.1); } to { transform: scale(1); } }
+}
+
+/* Theme-matched images (see ThemedImage.jsx). */
+.theme-img-dark { display: none; }
+:root[data-theme='dark'] .theme-img-dark { display: block; }
+:root[data-theme='dark'] .theme-img-light { display: none; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) .theme-img-dark { display: block; }
+  :root:not([data-theme]) .theme-img-light { display: none; }
+}
+[data-venture='easelect'] .venture-media img { object-position: top center; }
+
+/* Platform cards on the Easelect page: image on top, copy below. */
+.card-media-frame { aspect-ratio: 16 / 10; overflow: hidden; border-bottom: 1px solid var(--line); background: var(--surface-2); }
+.card-media-frame img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+.card-platform .card-media-frame img[width='800'] { object-position: center 35%; }
+.card-media-body { padding: clamp(24px, 3vw, 32px); display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+.card-media-body .icon-tile { margin-bottom: 8px; }
+.card-media-body .status { margin-top: 12px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero::before, .page-hero::before, .diagram-link .pulse, .core-dot, .status-live .status-dot { animation: none; }
+  .hero .badge, .hero .display, .hero .hero-lead, .hero .btn-row, .hero .status-list,
+  .page-hero .badge, .page-hero .display, .page-hero .hero-lead,
+  .diagram .chip, .diagram .diagram-venture, .diagram-core, .page-enter { animation: none; }
+  .reveal-ready .reveal:not(.visible) { filter: none; }
+  .venture-card:hover, .link-row:hover, .btn-primary:hover { transform: none; }
+  .venture-card:hover .venture-media img { transform: none; }
+}
+
 /* 13. Responsive ----------------------------------------------------------- */
 @media (max-width: 1120px) {
   .site-nav { display: none; }
@@ -598,6 +751,8 @@ select.form-control { appearance: auto; }
   .diagram-link { display: none; }
   .diagram-core-col { padding-top: 0; }
   .ventures-grid, .card-grid-3, .card-grid-2, .pillars, .capabilities, .markets { grid-template-columns: minmax(0, 1fr); }
+  .capabilities .capability { border-inline-end: 0 !important; border-bottom: 1px solid var(--line) !important; }
+  .capabilities .capability:last-child { border-bottom: 0 !important; }
 }
 @media (max-width: 640px) {
   .header-cta { display: none; }

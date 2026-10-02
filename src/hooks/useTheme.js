@@ -6,7 +6,7 @@ import { useSyncExternalStore } from 'react';
  * Until the visitor picks a theme, it keeps following the system setting.
  */
 const STORAGE_KEY = 'theme';
-const THEME_COLORS = { light: '#ffffff', dark: '#0e1015' };
+const THEME_COLORS = { light: '#f6f7f9', dark: '#0b0d11' };
 const listeners = new Set();
 
 function read() {
