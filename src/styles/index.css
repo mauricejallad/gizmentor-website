@@ -376,8 +376,8 @@ strong, b { font-weight: 600; }
 .page-hero-inner { display: flex; flex-direction: column; justify-content: flex-end; position: relative; }
 .page-hero-mark { position: absolute; z-index: -1; inset-inline-end: -10vw; top: 8%; width: min(78vh, 760px); fill: none; stroke: rgba(255, 255, 255, 0.14); stroke-width: 0.12; animation: mark-in 1.6s var(--ease) var(--intro) both, drift 26s ease-in-out infinite alternate; }
 .hero-word {
-  font-size: min(15.5vw, 15rem); line-height: 0.82; letter-spacing: -0.065em; font-weight: 500; white-space: nowrap;
-  margin-inline-start: -0.04em; overflow: hidden; padding-bottom: 0.06em;
+  font-size: min(15.5vw, 15rem); line-height: 0.82; letter-spacing: -0.065em; font-weight: 500; text-wrap: balance;
+  margin-inline-start: -0.04em; padding-bottom: 0.14em;
 }
 .hero-word span { display: block; animation: word-up 1.2s var(--ease) var(--intro) both; }
 .page-hero-copy { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: clamp(32px, 6vw, 96px); margin-top: clamp(40px, 5vw, 72px); align-items: start; }
@@ -684,6 +684,7 @@ select.form-control { appearance: auto; }
 /* 14. Legal ---------------------------------------------------------------- */
 .legal-hero { position: relative; isolation: isolate; overflow: hidden; padding: 200px 0 64px; }
 .legal-hero .hero-word { font-size: min(13vw, 11rem); }
+[dir='rtl'] .legal-hero .hero-word { font-size: min(9vw, 7.5rem); }
 .legal-hero .page-hero-mark { width: min(60vh, 520px); top: -10%; }
 .legal-hero-notice { display: flex; align-items: center; gap: 10px; margin-top: 32px; font-size: 1rem; color: var(--text-2); }
 .legal-hero-title { margin-top: 24px; font-size: 1.75rem; font-weight: 500; letter-spacing: -0.03em; }
@@ -705,7 +706,8 @@ select.form-control { appearance: auto; }
 .page-enter { --intro: 0.05s; animation: page-in 0.6s var(--ease) both; }
 @keyframes page-in { from { opacity: 0; } }
 @keyframes rise { from { opacity: 0; transform: translateY(48px); } to { opacity: 1; transform: none; } }
-@keyframes word-up { from { transform: translateY(105%); } to { transform: none; } }
+/* The word slides up from behind an edge; the clip ends well outside the glyphs, so descenders (g, j, y) are never cut. */
+@keyframes word-up { from { transform: translateY(45%); clip-path: inset(0 -10% 100% -10%); } to { transform: none; clip-path: inset(-30% -10% -40% -10%); } }
 @keyframes mark-in { from { opacity: 0; transform: scale(1.12) rotate(-6deg); } }
 @keyframes hero-bg-in { from { transform: scale(1.18); opacity: 0; } }
 @keyframes drift { to { transform: translate3d(-2%, 3%, 0) rotate(4deg); } }
