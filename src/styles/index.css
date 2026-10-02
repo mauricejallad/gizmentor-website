@@ -708,9 +708,9 @@ select.form-control { appearance: auto; }
 @keyframes rise { from { opacity: 0; transform: translateY(48px); } to { opacity: 1; transform: none; } }
 /* The word slides up from behind an edge; the clip ends well outside the glyphs, so descenders (g, j, y) are never cut. */
 @keyframes word-up { from { transform: translateY(45%); clip-path: inset(0 -10% 100% -10%); } to { transform: none; clip-path: inset(-30% -10% -40% -10%); } }
-@keyframes mark-in { from { opacity: 0; transform: scale(1.12) rotate(-6deg); } }
+@keyframes mark-in { from { opacity: 0; transform: scale(1.12); } }
 @keyframes hero-bg-in { from { transform: scale(1.18); opacity: 0; } }
-@keyframes drift { to { transform: translate3d(-2%, 3%, 0) rotate(4deg); } }
+@keyframes drift { to { transform: translate3d(-2%, 3%, 0); } }
 .home-hero :is(.hero-label, .hero-display, .hero-lead), .page-hero :is(.hero-label, .page-hero-copy > *, .status-list, .toc),
 .legal-hero :is(.legal-hero-title, .legal-hero-notice) { animation: rise 1s var(--ease) both; animation-delay: calc(var(--intro) + 0.1s); }
 .home-hero .hero-display, .page-hero .page-hero-copy > :last-child { animation-delay: calc(var(--intro) + 0.2s); }
@@ -740,7 +740,7 @@ select.form-control { appearance: auto; }
   .home-hero-bg { animation: hero-parallax linear both; animation-timeline: view(); animation-range: exit 0% exit 100%; }
   @keyframes hero-parallax { to { transform: translateY(22%) scale(1.06); } }
   .home-hero-mark-wrap { animation: mark-parallax linear both; animation-timeline: view(); animation-range: exit 0% exit 100%; }
-  @keyframes mark-parallax { to { transform: translateY(-18%) rotate(-8deg); } }
+  @keyframes mark-parallax { to { transform: translateY(-18%); } }
   .home-hero-inner, .page-hero-inner { animation: copy-parallax linear both; animation-timeline: view(); animation-range: exit 0% exit 100%; }
   @keyframes copy-parallax { to { transform: translateY(24vh); opacity: 0.2; } }
   .banner img, .highlight .media-frame img, .gallery-grid .media-frame img, .split-media .media-frame img, .split-panel-media img {
