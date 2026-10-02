@@ -316,7 +316,9 @@ strong, b { font-weight: 600; }
 /* 8. Footer ---------------------------------------------------------------- */
 .site-footer { background: var(--bg); color: var(--text); padding: clamp(64px, 7vw, 100px) 0 40px; border-top: 1px solid var(--line); }
 .footer-top { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 3fr) minmax(0, 3fr) auto; gap: 40px; align-items: start; }
-.footer-tagline { color: var(--text-2); margin-top: 20px; max-width: 30ch; font-size: 1rem; }
+.footer-brand .logo { font-size: 2.125rem; gap: 12px; }
+.footer-brand .logo svg { width: 60px; height: 60px; }
+.footer-tagline { color: var(--text-2); margin-top: 24px; max-width: 30ch; font-size: 1rem; }
 .footer-nav { display: flex; flex-direction: column; gap: 6px; }
 .footer-nav a { font-size: 1.0625rem; font-weight: 500; transition: color 0.3s; }
 .footer-nav a:hover { color: var(--red); }
@@ -825,6 +827,11 @@ select.form-control { appearance: auto; }
   .logo svg { width: 34px; height: 34px; }
   .header-inner, .site-header.is-pinned .header-inner { column-gap: 12px; }
   .header-tools { gap: 4px; }
+  .footer-brand .logo { font-size: 1.75rem; gap: 10px; }
+  .footer-brand .logo svg { width: 50px; height: 50px; }
+  .split-panel { min-height: 0; }
+  .split-panel-quote { margin-top: 0; grid-template-columns: 40px minmax(0, 1fr); }
+  .quote-mark { font-size: 4rem; }
   .site-header :is(.tool-pill, .tool-button) { min-height: 36px; min-width: 36px; }
   .site-header .header-tools .tool-pill { padding: 0 10px; font-size: 0.8125rem; }
 }
@@ -832,7 +839,4 @@ select.form-control { appearance: auto; }
   /* Smallest phones: the language and theme controls move into the menu. */
   .header-tools > .tool-pill, .header-tools > .theme-toggle { display: none; }
   .mobile-menu-tools { display: flex; }
-  .split-panel { min-height: 0; }
-  .split-panel-quote { margin-top: 0; grid-template-columns: 40px minmax(0, 1fr); }
-  .quote-mark { font-size: 4rem; }
 }
